@@ -141,11 +141,6 @@
       "source": "/wp-sitemap-users-1.xml",
       "destination": "/sitemap-index.xml",
       "statusCode": 301
-    },
-    {
-      "source": "/:path((?!.*\\.).*)",
-      "destination": "/:path/",
-      "permanent": true
     }
   ],
   "headers": [
