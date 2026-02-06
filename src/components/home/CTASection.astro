@@ -1,0 +1,27 @@
+---
+import Button from "@/components/ui/Button.astro";
+import Container from "@/components/ui/Container.astro";
+import AnimateOnScroll from "@/components/ui/AnimateOnScroll.astro";
+---
+
+<section class="py-24 md:py-32 bg-[#111111]">
+  <Container>
+    <AnimateOnScroll>
+      <div class="text-center">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-snug">
+          지금, 에이정과 함께
+          <br />
+          성장할 준비가 되셨나요?
+        </h2>
+        <p class="mt-5 text-gray-400 text-base md:text-lg">
+          지금 바로 문의해보세요.
+        </p>
+        <div class="mt-8">
+          <Button href="/contact/" size="lg" class="px-12">
+            지금 문의하기
+          </Button>
+        </div>
+      </div>
+    </AnimateOnScroll>
+  </Container>
+</section>

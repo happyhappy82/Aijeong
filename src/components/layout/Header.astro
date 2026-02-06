@@ -1,0 +1,81 @@
+---
+import { NAV_ITEMS, SITE_CONFIG } from "@/lib/constants";
+import { cn } from "@/lib/utils";
+import ThemeToggle from "./ThemeToggle.astro";
+import MobileMenu from "./MobileMenu.astro";
+import Container from "@/components/ui/Container.astro";
+---
+
+<header id="header" class="fixed top-0 left-0 right-0 z-30 transition-all duration-300 bg-transparent">
+  <Container>
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <a href="/" class="flex items-center group">
+        <img
+          src="/images/logo/logo-original.svg"
+          alt={SITE_CONFIG.name}
+          class="h-8 md:h-10 w-auto block dark:hidden"
+        />
+        <img
+          src="/images/logo/logo-white.svg"
+          alt={SITE_CONFIG.name}
+          class="h-8 md:h-10 w-auto hidden dark:block"
+        />
+      </a>
+
+      <nav class="hidden md:flex items-center gap-1">
+        {NAV_ITEMS.map((item) => (
+          <a
+            href={item.href}
+            class="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-all duration-200"
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <ThemeToggle />
+        <button
+          id="mobile-menu-button"
+          class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-muted transition-colors cursor-pointer"
+          aria-label="메뉴 열기"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </Container>
+</header>
+
+<MobileMenu />
+
+<script>
+  // Handle scroll effect
+  function handleScroll() {
+    const header = document.getElementById('header');
+    if (!header) return;
+
+    if (window.scrollY > 20) {
+      header.classList.add('bg-background/80', 'backdrop-blur-lg', 'border-b', 'border-border', 'shadow-sm');
+      header.classList.remove('bg-transparent');
+    } else {
+      header.classList.remove('bg-background/80', 'backdrop-blur-lg', 'border-b', 'border-border', 'shadow-sm');
+      header.classList.add('bg-transparent');
+    }
+  }
+
+  // Add scroll listener
+  window.addEventListener('scroll', handleScroll, { passive: true });
+
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.add('mobile-menu-open');
+    });
+  }
+</script>

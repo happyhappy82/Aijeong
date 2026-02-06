@@ -1,0 +1,389 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/ui/Container.astro';
+import Badge from '../components/ui/Badge.astro';
+import { getAllPosts } from '../lib/wp-content';
+import { formatDate } from '../lib/utils';
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+const stripHtml = (html: string) => html.replace(/<[^>]*>/g, '').replace(/&amp;#8230;/g, '…').replace(/&[^;]+;/g, '').trim();
+const plainExcerpt = post.excerpt ? stripHtml(post.excerpt) : '';
+
+const backLink = post.categorySlug === 'blog' ? '/135-2/' : '/교육사례-2/';
+const backLabel = post.categorySlug === 'blog' ? '블로그' : '교육사례';
+const categoryName = post.categorySlug === 'blog' ? '블로그' : '교육사례';
+
+// Sanitize WordPress content for Astro
+const SCRIPT_END = '<' + '/script>';
+function sanitizeContent(html: string): string {
+  let content = html;
+  // 1. Remove AdSense: ins blocks, push scripts, async scripts, comments
+  content = content.replace(/<ins\s+class="adsbygoogle"[\s\S]*?<\/ins>/g, '');
+  content = content.replace(new RegExp('<script>\\s*\\(adsbygoogle[\\s\\S]*?' + SCRIPT_END, 'g'), '');
+  content = content.replace(new RegExp('<script[^>]*googlesyndication[^>]*>' + SCRIPT_END, 'g'), '');
+  content = content.replace(/<!--\s*에이정[^>]*-->/g, '');
+  // 2. Remove ad placeholder code-block divs
+  content = content.replace(/<div\s+class='code-block[^']*'[^>]*>[\s\S]*?<\/div>/g, '');
+  // 3. Fix TOC links: absolute https://aijeong.com/...#anchor → #anchor
+  content = content.replace(/href="https?:\/\/aijeong\.com\/[^"]*?(#[^"]*)"/g, 'href="$1"');
+  // 4. Fix other internal absolute links → relative
+  content = content.replace(/href="https?:\/\/aijeong\.com\//g, 'href="/');
+  // 5. Remove empty <p>, <pre> tags (including with &nbsp; or whitespace)
+  content = content.replace(/<p>(\s|&nbsp;)*<\/p>/g, '');
+  content = content.replace(/<pre[^>]*>(\s|&nbsp;)*<\/pre>/g, '');
+  // 6. Remove <p> wrapping block elements (causes empty <p> in browser)
+  content = content.replace(/<p>\s*(<div)/g, '$1');
+  content = content.replace(/(<\/div>)\s*<\/p>/g, '$1');
+  // 7. Remove orphan closing tags at the end
+  content = content.replace(/(\s*<\/p>)+\s*$/g, '');
+  // 8. Add lazy loading to images in WordPress content
+  content = content.replace(/<img /g, '<img loading="lazy" ');
+  return content;
+}
+
+const cleanContent = sanitizeContent(post.content || '');
+
+// Estimate reading time (Korean ~500 chars/min)
+const textContent = stripHtml(post.content || '');
+const readingTime = Math.max(1, Math.round(textContent.length / 500));
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.title,
+  description: plainExcerpt,
+  image: post.featuredImage || undefined,
+  datePublished: post.date,
+  dateModified: post.modified || post.date,
+  author: { '@type': 'Organization', name: '에이정' },
+  publisher: {
+    '@type': 'Organization',
+    name: '에이정 주식회사',
+    logo: { '@type': 'ImageObject', url: 'https://aijeong.com/images/logo/logo-light.png' }
+  },
+  ...(post.tags.length > 0 && { keywords: post.tags.join(', ') })
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: '홈', item: 'https://aijeong.com/' },
+    { '@type': 'ListItem', position: 2, name: categoryName, item: `https://aijeong.com${backLink}` },
+    { '@type': 'ListItem', position: 3, name: post.title }
+  ]
+};
+
+// Auto-detect FAQ from "자주 묻는 질문" section
+function extractFaqItems(html: string): { question: string; answer: string }[] {
+  const items: { question: string; answer: string }[] = [];
+
+  // Find the FAQ heading (H2/H3 containing "자주 묻는 질문")
+  const faqHeadingMatch = html.match(/<h[23][^>]*>[\s\S]*?자주 묻는 질문[\s\S]*?<\/h[23]>/i);
+  if (!faqHeadingMatch || faqHeadingMatch.index === undefined) return items;
+
+  const faqSection = html.slice(faqHeadingMatch.index + faqHeadingMatch[0].length);
+
+  // Pattern 1: <p><strong>Q. question?</strong><br/> A. answer</p>
+  const inlinePairs = [...faqSection.matchAll(/<p>\s*<strong>\s*Q\.\s*(.*?\?)\s*<\/strong>\s*(?:<br\s*\/?>)?\s*A\.\s*([\s\S]*?)<\/p>/gi)];
+  for (const m of inlinePairs) {
+    const question = stripHtml(m[1]);
+    const answer = stripHtml(m[2]).slice(0, 300);
+    if (question.length > 5 && answer.length > 10) {
+      items.push({ question, answer });
+    }
+  }
+
+  // Pattern 2: <p><strong>Q. question?</strong></p> then <p>A. answer</p>
+  if (items.length < 2) {
+    const separatePairs = [...faqSection.matchAll(/<p>\s*<strong>\s*Q\.\s*(.*?\?)\s*<\/strong>\s*<\/p>/gi)];
+    for (const m of separatePairs) {
+      const question = stripHtml(m[1]);
+      const afterQ = faqSection.slice((m.index ?? 0) + m[0].length);
+      const nextP = afterQ.match(/<p>\s*A\.\s*([\s\S]*?)<\/p>/i);
+      if (nextP) {
+        const answer = stripHtml(nextP[1]).slice(0, 300);
+        if (question.length > 5 && answer.length > 10) {
+          items.push({ question, answer });
+        }
+      }
+    }
+  }
+
+  // Pattern 3: H2/H3 question headings (fallback for non-standard FAQ)
+  if (items.length < 2) {
+    const headingRegex = /<h[23][^>]*>(.*?)<\/h[23]>/gi;
+    const matches = [...faqSection.matchAll(headingRegex)];
+    for (let i = 0; i < matches.length; i++) {
+      const headingText = stripHtml(matches[i][1]);
+      if (!headingText.match(/\?|될까|할까|일까|인가/)) continue;
+      const startIdx = (matches[i].index ?? 0) + matches[i][0].length;
+      const endIdx = i + 1 < matches.length ? (matches[i + 1].index ?? faqSection.length) : faqSection.length;
+      const answerText = stripHtml(faqSection.slice(startIdx, endIdx)).slice(0, 300);
+      if (answerText.length > 20) {
+        items.push({ question: headingText, answer: answerText });
+      }
+    }
+  }
+
+  return items;
+}
+
+const faqItems = extractFaqItems(post.content || '');
+const faqSchema = faqItems.length >= 2 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(item => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+} : null;
+---
+
+<BaseLayout
+  title={post.title}
+  description={plainExcerpt}
+  ogImage={post.featuredImage || undefined}
+>
+  <!-- Reading progress bar -->
+  <div id="progress-bar" class="fixed top-0 left-0 h-[3px] bg-accent z-50 transition-all duration-150" style="width: 0%"></div>
+
+  <article>
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    {faqSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    )}
+
+    <!-- Hero Section -->
+    {post.featuredImage && (
+      <div class="max-w-[1080px] mx-auto px-5 sm:px-6 pt-8 md:pt-12">
+        <div class="max-w-[680px] aspect-square overflow-hidden rounded-2xl">
+          <img
+            src={post.featuredImage}
+            alt={post.title}
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    )}
+
+    <!-- Article Layout: Content + Sticky TOC Sidebar -->
+    <div class="max-w-[1080px] mx-auto px-5 sm:px-6">
+      <div class="relative xl:flex xl:gap-10">
+        <!-- Main Content Column -->
+        <div class="flex-1 min-w-0 max-w-[680px]">
+          <div class={post.featuredImage ? "pt-8 md:pt-12" : "pt-16 md:pt-24"}>
+            <!-- Back button -->
+            <a
+              href={backLink}
+              class="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+              {backLabel}
+            </a>
+
+            <!-- Title area -->
+            <div class="mt-6 mb-8">
+              <div class="flex items-center gap-2.5 mb-4">
+                <Badge variant="accent">
+                  {categoryName}
+                </Badge>
+                <span class="text-xs text-muted-foreground">
+                  {readingTime}분 읽기
+                </span>
+              </div>
+
+              <h1 class="text-2xl md:text-3xl lg:text-[36px] font-bold leading-[1.35] tracking-tight">
+                {post.title}
+              </h1>
+
+              {plainExcerpt && (
+                <p class="mt-4 text-base md:text-lg text-muted-foreground leading-relaxed">
+                  {plainExcerpt}
+                </p>
+              )}
+
+              <!-- Meta info -->
+              <div class="mt-6 flex items-center gap-3 text-sm text-muted-foreground">
+                <div class="flex items-center gap-4">
+                  <span class="font-medium text-foreground">에이정</span>
+                  <span>{formatDate(post.date)}</span>
+                </div>
+              </div>
+
+              {post.tags.length > 0 && (
+                <div class="mt-4 flex flex-wrap gap-2">
+                  {post.tags.map((tag) => (
+                    <span class="px-2.5 py-1 text-xs rounded-md bg-muted text-muted-foreground">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <hr class="border-border" />
+          </div>
+
+          <!-- Article Content -->
+          {cleanContent && (
+            <div class="wp-content mt-8 pb-16" set:html={cleanContent} />
+          )}
+
+          <!-- Article Footer -->
+          <div class="border-t border-border pt-8 pb-16">
+            <div class="flex items-center justify-between">
+              <a
+                href={backLink}
+                class="inline-flex items-center gap-2 text-sm font-medium text-accent hover:text-accent-hover transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                {backLabel} 목록으로
+              </a>
+
+              <button
+                id="share-btn"
+                class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                </svg>
+                공유
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky TOC Sidebar (desktop only) -->
+        <aside id="toc-sidebar" class="hidden xl:block w-[260px] shrink-0">
+          <div class="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto">
+            <!-- TOC will be moved here by JS -->
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <!-- Scripts -->
+  <script is:inline>
+    // Reading progress bar
+    const progressBar = document.getElementById('progress-bar');
+    if (progressBar) {
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = progress + '%';
+      });
+    }
+
+    // TOC: move to sticky sidebar on desktop
+    const tocSidebar = document.getElementById('toc-sidebar');
+    const tocSource = document.querySelector('.wp-content .ez-toc-widget-container') ||
+                      document.querySelector('.wp-content #ez-toc-container') ||
+                      document.querySelector('.wp-content div[class*="ez-toc"]');
+
+    if (tocSidebar && tocSource) {
+      const sidebarInner = tocSidebar.querySelector('.sticky');
+      if (sidebarInner) {
+        // Clone TOC into sidebar
+        const tocClone = tocSource.cloneNode(true);
+        tocClone.classList.add('sidebar-toc');
+        // Ensure nav is visible in sidebar (remove hidden state)
+        const nav = tocClone.querySelector('nav');
+        if (nav) nav.classList.remove('ez-toc-hidden');
+        sidebarInner.appendChild(tocClone);
+
+        // Hide original TOC on desktop
+        tocSource.classList.add('toc-inline-only');
+      }
+
+      // Active heading tracking
+      const tocLinks = sidebarInner ? sidebarInner.querySelectorAll('.ez-toc-link') : [];
+      if (tocLinks.length > 0) {
+        const headingIds = [];
+        tocLinks.forEach(function(link) {
+          var href = link.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            headingIds.push(href.substring(1));
+          }
+        });
+
+        function updateActiveHeading() {
+          var scrollY = window.scrollY + 100;
+          var activeId = '';
+          for (var i = 0; i < headingIds.length; i++) {
+            var el = document.getElementById(headingIds[i]);
+            if (el && el.offsetTop <= scrollY) {
+              activeId = headingIds[i];
+            }
+          }
+          tocLinks.forEach(function(link) {
+            var href = link.getAttribute('href');
+            if (href === '#' + activeId) {
+              link.classList.add('toc-active');
+            } else {
+              link.classList.remove('toc-active');
+            }
+          });
+        }
+
+        window.addEventListener('scroll', updateActiveHeading);
+        updateActiveHeading();
+      }
+    }
+
+    // TOC toggle (for inline/mobile TOC)
+    const tocToggle = document.querySelector('.wp-content .ez-toc-toggle');
+    if (tocToggle) {
+      const tocContainer = tocToggle.closest('.ez-toc-title-container');
+      const navEl = tocContainer ? tocContainer.nextElementSibling : null;
+      if (navEl) {
+        tocToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          navEl.classList.toggle('ez-toc-hidden');
+        });
+      }
+    }
+
+    // Share button
+    const shareBtn = document.getElementById('share-btn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', async () => {
+        try {
+          if (navigator.share) {
+            await navigator.share({ title: document.title, url: window.location.href });
+          } else {
+            await navigator.clipboard.writeText(window.location.href);
+            shareBtn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> 복사됨';
+            setTimeout(() => {
+              shareBtn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg> 공유';
+            }, 2000);
+          }
+        } catch (e) {}
+      });
+    }
+  </script>
+</BaseLayout>

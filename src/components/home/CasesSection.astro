@@ -1,0 +1,61 @@
+---
+import Container from "@/components/ui/Container.astro";
+import AnimateOnScroll from "@/components/ui/AnimateOnScroll.astro";
+
+const cases = [
+  {
+    image: "/images/cases/national-corporation.jpg",
+    title: "공공기관",
+    desc: "서울 여성인력센터에서 실무 중심 커리큘럼을 통해\nGPT 기초과정 교육을 진행했습니다",
+  },
+  {
+    image: "/images/cases/big-company.jpg",
+    title: "대기업",
+    desc: "각 기관별로 맞춤형 커리큘럼을 제시하고, 팀 전체가 업무와 비즈니스에 AI를 적용할 수 있도록 지원합니다",
+  },
+  {
+    image: "/images/cases/middle-school.jpg",
+    title: "중 · 고등학생 AI 교육",
+    desc: "10대들에게도 AI 교육은 필수입니다.\n중 · 고등학교에서도 AI역량을 교육하고 있습니다.",
+  },
+];
+---
+
+<section class="py-24 md:py-32 bg-[#111111]">
+  <Container>
+    <AnimateOnScroll>
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1.5 rounded-md border border-gray-600 text-sm font-bold text-white tracking-wider mb-5">
+          CASES
+        </span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white">
+          실제 사례들
+        </h2>
+        <p class="mt-5 text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+          기초 입문부터 실무 심화까지, 누구나 참여할 수 있는 폭넓은 AI 교육 과정을 마련했습니다.
+        </p>
+      </div>
+    </AnimateOnScroll>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {cases.map((item, i) => (
+        <AnimateOnScroll delay={i * 0.1}>
+          <div class="text-center">
+            <div class="aspect-[4/3] rounded-xl overflow-hidden mb-5">
+              <img
+                src={item.image}
+                alt={item.title}
+                loading="lazy"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">{item.title}</h3>
+            <p class="text-sm text-gray-400 leading-relaxed whitespace-pre-line">
+              {item.desc}
+            </p>
+          </div>
+        </AnimateOnScroll>
+      ))}
+    </div>
+  </Container>
+</section>

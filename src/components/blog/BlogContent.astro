@@ -1,0 +1,19 @@
+---
+import { marked } from 'marked';
+
+interface Props {
+  content: string;
+}
+
+const { content } = Astro.props;
+
+// Configure marked for GFM (GitHub Flavored Markdown)
+marked.setOptions({
+  gfm: true,
+  breaks: true,
+});
+
+const htmlContent = marked(content);
+---
+
+<div class="blog-content" set:html={htmlContent} />

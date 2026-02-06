@@ -1,0 +1,196 @@
+{
+  "framework": "astro",
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/blog/",
+      "destination": "/135-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog",
+      "destination": "/135-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/education-cases/",
+      "destination": "/%EA%B5%90%EC%9C%A1%EC%82%AC%EB%A1%80-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/education-cases",
+      "destination": "/%EA%B5%90%EC%9C%A1%EC%82%AC%EB%A1%80-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/:slug/",
+      "destination": "/:slug/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/:slug/",
+      "statusCode": 301
+    },
+    {
+      "source": "/education-cases/:slug/",
+      "destination": "/:slug/",
+      "statusCode": 301
+    },
+    {
+      "source": "/education-cases/:slug",
+      "destination": "/:slug/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/blog/",
+      "destination": "/135-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/blog",
+      "destination": "/135-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/casestudy/",
+      "destination": "/%EA%B5%90%EC%9C%A1%EC%82%AC%EB%A1%80-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/casestudy",
+      "destination": "/%EA%B5%90%EC%9C%A1%EC%82%AC%EB%A1%80-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/:path*",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/:path*",
+      "destination": "/135-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-admin/:path*",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-login.php",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-content/:path*",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-includes/:path*",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-json/:path*",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/xmlrpc.php",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/feed/",
+      "destination": "/rss.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/feed",
+      "destination": "/rss.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-sitemap-posts-post-1.xml",
+      "destination": "/sitemap-index.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-sitemap-posts-page-1.xml",
+      "destination": "/sitemap-index.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-sitemap-taxonomies-category-1.xml",
+      "destination": "/sitemap-index.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-sitemap-taxonomies-post_tag-1.xml",
+      "destination": "/sitemap-index.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-sitemap-users-1.xml",
+      "destination": "/sitemap-index.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path((?!.*\\.).*)",
+      "destination": "/:path/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/_astro/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

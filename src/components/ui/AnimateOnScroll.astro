@@ -1,0 +1,106 @@
+---
+import { cn } from "@/lib/utils";
+
+interface Props {
+  class?: string;
+  delay?: number;
+  direction?: "up" | "down" | "left" | "right";
+}
+
+const { class: className, delay = 0, direction = "up" } = Astro.props;
+
+const uniqueId = `animate-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class={cn("animate-on-scroll", className)} data-delay={delay} data-direction={direction} data-id={uniqueId}>
+  <slot />
+</div>
+
+<style>
+  .animate-on-scroll {
+    opacity: 0;
+  }
+
+  .animate-on-scroll.is-visible {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.animate-on-scroll');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const delay = parseFloat(el.dataset.delay || '0');
+            const direction = el.dataset.direction || 'up';
+
+            // Apply direction-specific animation
+            if (direction === 'down') {
+              el.style.animation = `fadeInDown 0.6s ease-out ${delay}s forwards`;
+            } else if (direction === 'left') {
+              el.style.animation = `fadeInLeft 0.6s ease-out ${delay}s forwards`;
+            } else if (direction === 'right') {
+              el.style.animation = `fadeInRight 0.6s ease-out ${delay}s forwards`;
+            } else {
+              el.style.animation = `fadeInUp 0.6s ease-out ${delay}s forwards`;
+            }
+
+            el.classList.add('is-visible');
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '-100px' }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+  });
+</script>

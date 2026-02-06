@@ -1,0 +1,67 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+}
+
+const { title, slug } = Astro.props;
+---
+
+<div class="flex items-center gap-2">
+  <button
+    id="copy-link-btn"
+    data-url={`https://aijeong.com/blog/${slug}`}
+    class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted text-sm hover:bg-border transition-colors cursor-pointer"
+  >
+    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+    </svg>
+    <span class="copy-text">링크 복사</span>
+  </button>
+  <button
+    id="share-twitter-btn"
+    data-title={title}
+    data-url={`https://aijeong.com/blog/${slug}`}
+    class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted text-sm hover:bg-border transition-colors cursor-pointer"
+  >
+    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+    </svg>
+    공유
+  </button>
+</div>
+
+<script>
+  // Copy link functionality
+  const copyBtn = document.getElementById('copy-link-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      const url = copyBtn.getAttribute('data-url') || window.location.href;
+      const textSpan = copyBtn.querySelector('.copy-text');
+
+      try {
+        await navigator.clipboard.writeText(url);
+        if (textSpan) {
+          textSpan.textContent = '복사됨!';
+          setTimeout(() => {
+            textSpan.textContent = '링크 복사';
+          }, 2000);
+        }
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    });
+  }
+
+  // Twitter share functionality
+  const twitterBtn = document.getElementById('share-twitter-btn');
+  if (twitterBtn) {
+    twitterBtn.addEventListener('click', () => {
+      const title = twitterBtn.getAttribute('data-title');
+      const url = twitterBtn.getAttribute('data-url');
+      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title || '')}&url=${encodeURIComponent(url || '')}`;
+      window.open(twitterUrl, '_blank');
+    });
+  }
+</script>

@@ -1,0 +1,80 @@
+---
+import BlogCard from "./BlogCard.astro";
+import type { BlogPost } from "../../lib/types";
+
+interface Props {
+  posts: BlogPost[];
+}
+
+const { posts } = Astro.props;
+
+// Get unique categories
+const categories = ["전체", ...Array.from(new Set(posts.map(p => p.category)))];
+---
+
+<div>
+  <!-- Category filter -->
+  <div class="flex flex-wrap gap-2 mb-8">
+    {categories.map((cat, index) => (
+      <button
+        data-category={cat}
+        class:list={[
+          "category-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer",
+          index === 0 ? "bg-accent text-white" : "bg-muted text-muted-foreground hover:bg-border"
+        ]}
+      >
+        {cat}
+      </button>
+    ))}
+  </div>
+
+  <!-- List -->
+  <div id="blog-list">
+    {posts.length > 0 ? (
+      <div class="divide-y divide-border">
+        {posts.map((post) => (
+          <div class="blog-item" data-category={post.category}>
+            <BlogCard post={post} />
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-20 text-muted-foreground">
+        <p class="text-lg">아직 게시된 글이 없습니다.</p>
+      </div>
+    )}
+  </div>
+</div>
+
+<script>
+  // Category filter functionality
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  const blogItems = document.querySelectorAll('.blog-item');
+
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const selectedCategory = button.getAttribute('data-category');
+
+      // Update active button
+      categoryButtons.forEach(btn => {
+        if (btn === button) {
+          btn.classList.remove('bg-muted', 'text-muted-foreground', 'hover:bg-border');
+          btn.classList.add('bg-accent', 'text-white');
+        } else {
+          btn.classList.remove('bg-accent', 'text-white');
+          btn.classList.add('bg-muted', 'text-muted-foreground', 'hover:bg-border');
+        }
+      });
+
+      // Filter blog items
+      blogItems.forEach(item => {
+        const itemCategory = item.getAttribute('data-category');
+        if (selectedCategory === '전체' || itemCategory === selectedCategory) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

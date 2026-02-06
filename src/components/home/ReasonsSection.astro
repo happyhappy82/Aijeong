@@ -1,0 +1,63 @@
+---
+import Container from "@/components/ui/Container.astro";
+import AnimateOnScroll from "@/components/ui/AnimateOnScroll.astro";
+
+const reasons = [
+  {
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=400&auto=format&fit=crop",
+    title: "최신 트렌드",
+    desc: "AI를 빠르고, 효율적으로 배우려면 최신 트렌드를 알아야 합니다.\n저희는 항상 트렌드를 반영한 변화되고, 맞춤형 커리큘럼을 통해 서비스를 제공해 드리고 있습니다.",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=400&auto=format&fit=crop",
+    title: "전문성",
+    desc: "다양한 기업과 기관을 대상으로 한 교육 경험을 바탕으로,\n현업에서 실제로 활용되는 사례와 문제 해결 중심의 교육을 통해 학습자가 실무에 즉시 활용할 수 있도록 돕습니다.",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=400&auto=format&fit=crop",
+    title: "학습 지원",
+    desc: "교육이 끝난 이후에도 학습이 이어질 수 있도록,가이드 문서와 커뮤니티,\n추가 학습 세션 등 다양한 지원을 제공합니다. AI 활용 역량을 지속적으로 확장할 수 있도록 돕습니다.",
+  },
+];
+---
+
+<section class="py-24 md:py-32 bg-[#111111]">
+  <Container>
+    <AnimateOnScroll>
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1.5 rounded-md border border-gray-600 text-sm font-bold text-white tracking-wider mb-5">
+          REASONS
+        </span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white">
+          에이정을 선택해야하는 이유
+        </h2>
+        <p class="mt-5 text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+          최신 트렌드를 반영한 커리큘럼과 실무 경험 기반 교육으로 학습 이후까지 함께합니다.
+        </p>
+      </div>
+    </AnimateOnScroll>
+
+    <div class="max-w-4xl mx-auto space-y-12">
+      {reasons.map((item, i) => (
+        <AnimateOnScroll delay={i * 0.1}>
+          <div class="flex flex-col sm:flex-row items-start gap-6 pb-12 border-b border-[#222]">
+            <div class="w-full sm:w-48 h-36 rounded-xl overflow-hidden flex-shrink-0">
+              <img
+                src={item.image}
+                alt={item.title}
+                loading="lazy"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-white mb-3">{item.title}</h3>
+              <p class="text-sm text-gray-400 leading-relaxed whitespace-pre-line">
+                {item.desc}
+              </p>
+            </div>
+          </div>
+        </AnimateOnScroll>
+      ))}
+    </div>
+  </Container>
+</section>

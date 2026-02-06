@@ -1,0 +1,86 @@
+---
+import Container from "@/components/ui/Container.astro";
+import AnimateOnScroll from "@/components/ui/AnimateOnScroll.astro";
+
+const features = [
+  {
+    title: "공공기관, 대기업이 선택!",
+    desc: "GPT부터 최신 생성형 AI까지,\n한국 현장에서 검증된 맞춤형 AI 교육",
+  },
+  {
+    title: "기업 맞춤형 AI 교육",
+    desc: "현업에서 바로 쓸 수 있는\n실무 중심 AI 활용 교육",
+  },
+  {
+    title: "크리에이터 교육",
+    desc: "콘텐츠 제작, 블로그, SNS 자동화,\n마케팅 AI 교육",
+  },
+  {
+    title: "심화 교육",
+    desc: "최신 모델(Veo, Claude, GPT 등)\n기반의 고급 실습 교육",
+  },
+];
+---
+
+<section class="py-24 md:py-32 bg-[#111111]">
+  <Container>
+    <AnimateOnScroll>
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1.5 rounded-md border border-gray-600 text-sm font-bold text-white tracking-wider mb-5">
+          WHY
+        </span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white">
+          왜 에이정인가요?
+        </h2>
+        <p class="mt-5 text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+          기초 입문부터 실무 심화까지, 누구나 참여할 수 있는 폭넓은 AI 교육 과정을 마련했습니다.
+        </p>
+      </div>
+    </AnimateOnScroll>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-3xl mx-auto">
+      {features.map((item, i) => (
+        <AnimateOnScroll delay={i * 0.1}>
+          <div class="flex items-start gap-5">
+            <div class="w-16 h-16 rounded-2xl bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center flex-shrink-0 text-gray-400">
+              {i === 0 && (
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="7" height="7" x="3" y="3" rx="1"/>
+                  <rect width="7" height="7" x="14" y="3" rx="1"/>
+                  <rect width="7" height="7" x="14" y="14" rx="1"/>
+                  <rect width="7" height="7" x="3" y="14" rx="1"/>
+                </svg>
+              )}
+              {i === 1 && (
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="14" x="2" y="3" rx="2"/>
+                  <line x1="8" x2="16" y1="21" y2="21"/>
+                  <line x1="12" x2="12" y1="17" y2="21"/>
+                </svg>
+              )}
+              {i === 2 && (
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+                  <polyline points="16 7 22 7 22 13"/>
+                </svg>
+              )}
+              {i === 3 && (
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/>
+                  <path d="M22 10v6"/>
+                  <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
+                </svg>
+              )}
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-2">{item.title}</h3>
+              <p class="text-sm text-gray-400 leading-relaxed whitespace-pre-line">
+                {item.desc}
+              </p>
+            </div>
+          </div>
+        </AnimateOnScroll>
+      ))}
+    </div>
+  </Container>
+</section>

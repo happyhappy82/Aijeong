@@ -1,0 +1,146 @@
+---
+import { SITE_CONFIG } from "@/lib/constants";
+import Header from "@/components/layout/Header.astro";
+import Footer from "@/components/layout/Footer.astro";
+import "@/styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = SITE_CONFIG.description,
+  ogImage
+} = Astro.props;
+
+const fullTitle = title ? `${title} – 에이정, 가장 쉬운 AI교육` : '에이정, 가장 쉬운 AI교육';
+const canonicalURL = new URL(Astro.url.pathname, SITE_CONFIG.url);
+---
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="generator" content={Astro.generator} />
+
+  <link rel="canonical" href={canonicalURL} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="alternate" type="application/rss+xml" title="에이정 블로그" href="/rss.xml" />
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="preconnect" href="https://cdn.channel.io" />
+  <link rel="dns-prefetch" href="https://cdn.channel.io" />
+  <!-- Font preload -->
+  <link rel="preload" href="/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:site_name" content={SITE_CONFIG.fullName} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL} />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+  <title>{fullTitle}</title>
+
+  <!-- Google Tag Manager + GA4 (deferred) -->
+  <script is:inline>
+  (function(){
+    function loadAnalytics() {
+      // GTM
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-MZVN98MT');
+      // GA4
+      var s=document.createElement('script');s.async=true;
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-8VQ0NDW54N';
+      document.head.appendChild(s);
+      window.dataLayer=window.dataLayer||[];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());gtag('config','G-8VQ0NDW54N');
+    }
+    if('requestIdleCallback' in window){requestIdleCallback(loadAnalytics)}
+    else{setTimeout(loadAnalytics,3500)}
+  })();
+  </script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: '에이정',
+    url: 'https://aijeong.com',
+    description: SITE_CONFIG.description,
+    publisher: { '@type': 'Organization', name: '에이정 주식회사' }
+  })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: '에이정 주식회사',
+    url: 'https://aijeong.com',
+    logo: 'https://aijeong.com/images/logo/logo-light.png',
+    contactPoint: { '@type': 'ContactPoint', email: 'aijeong.insight@gmail.com', contactType: 'customer service' }
+  })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: '에이정 주식회사',
+    url: 'https://aijeong.com',
+    email: SITE_CONFIG.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '별내중앙로 30, 2층 204-에이치96호(별내동)',
+      addressLocality: '남양주시',
+      addressRegion: '경기도',
+      addressCountry: 'KR'
+    },
+    image: 'https://aijeong.com/images/logo/logo-light.png',
+    description: SITE_CONFIG.description,
+    priceRange: '$$'
+  })} />
+
+  <!-- Dark mode script (inline to prevent FOUC) -->
+  <script is:inline>
+    (function() {
+      const theme = localStorage.getItem('theme') || 'dark';
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+</head>
+<body class="font-sans antialiased">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZVN98MT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <Header />
+  <main class="min-h-screen pt-16 md:pt-20">
+    <slot />
+  </main>
+  <Footer />
+
+  <!-- Channel IO -->
+  <script is:inline>
+  (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.")}var ch=function(){ch.c(arguments)};ch.q=[];ch.c=function(args){ch.q.push(args)};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x)}}if(document.readyState==="complete"){l()}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l)}})();
+  ChannelIO('boot',{"pluginKey":"087b5cdc-dd5a-4329-b0f5-428c33004ebe"});
+  </script>
+</body>
+</html>

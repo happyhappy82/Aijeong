@@ -1,0 +1,91 @@
+---
+import { NAV_ITEMS } from "@/lib/constants";
+---
+
+<!-- Backdrop -->
+<div
+  id="mobile-menu-backdrop"
+  class="fixed inset-0 bg-black/50 z-40 md:hidden opacity-0 pointer-events-none transition-opacity duration-300"
+></div>
+
+<!-- Mobile Menu -->
+<div
+  id="mobile-menu"
+  class="fixed top-0 right-0 h-full w-72 bg-background border-l border-border z-50 md:hidden translate-x-full transition-transform duration-300"
+  style="transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);"
+>
+  <div class="flex justify-end p-4">
+    <button
+      id="mobile-menu-close"
+      class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-muted transition-colors cursor-pointer"
+      aria-label="메뉴 닫기"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+  <nav class="flex flex-col px-6 gap-2">
+    {NAV_ITEMS.map((item) => (
+      <a
+        href={item.href}
+        class="mobile-menu-link py-3 px-4 text-lg font-medium rounded-lg hover:bg-muted transition-colors"
+      >
+        {item.label}
+      </a>
+    ))}
+  </nav>
+</div>
+
+<script>
+  function initMobileMenu() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+    if (!mobileMenuButton || !mobileMenu || !mobileMenuBackdrop || !mobileMenuClose) return;
+
+    function openMenu() {
+      mobileMenu.classList.remove('translate-x-full');
+      mobileMenu.classList.add('translate-x-0');
+      mobileMenuBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+      mobileMenuBackdrop.classList.add('opacity-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.remove('translate-x-0');
+      mobileMenu.classList.add('translate-x-full');
+      mobileMenuBackdrop.classList.remove('opacity-100');
+      mobileMenuBackdrop.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+
+    // Open menu
+    mobileMenuButton.addEventListener('click', openMenu);
+
+    // Close menu
+    mobileMenuClose.addEventListener('click', closeMenu);
+    mobileMenuBackdrop.addEventListener('click', closeMenu);
+
+    // Close menu on link click
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  // Run on initial load
+  initMobileMenu();
+
+  // Re-run after navigation (for Astro View Transitions)
+  document.addEventListener('astro:after-swap', initMobileMenu);
+</script>
+
+<style>
+  /* Prevent body scroll when menu is open */
+  body:has(#mobile-menu.translate-x-0) {
+    overflow: hidden;
+  }
+</style>

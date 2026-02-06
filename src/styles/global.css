@@ -1,0 +1,545 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ===== Font ===== */
+@font-face {
+  font-family: "Pretendard Variable";
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/PretendardVariable.woff2") format("woff2-variations");
+}
+
+/* ===== CSS Variables ===== */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --border: #e5e5e5;
+  --accent: #0b2077;
+  --accent-hover: #091a63;
+  --card: #ffffff;
+  --card-foreground: #171717;
+}
+
+.dark {
+  --background: #0A0A0A;
+  --foreground: #ededed;
+  --muted: #1a1a1a;
+  --muted-foreground: #a3a3a3;
+  --border: #262626;
+  --accent: #6b8aff;
+  --accent-hover: #8da4ff;
+  --card: #141414;
+  --card-foreground: #ededed;
+}
+
+/* ===== Tailwind Theme ===== */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --font-sans: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+/* ===== Base Styles ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: 3px;
+}
+
+/* ===== WordPress Content Styles ===== */
+.wp-content {
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  color: var(--foreground);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* Headings */
+.wp-content h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.wp-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.wp-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.wp-content h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.wp-content h5,
+.wp-content h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+/* First element no extra top margin */
+.wp-content > *:first-child {
+  margin-top: 0;
+}
+
+/* Paragraphs */
+.wp-content p {
+  margin-bottom: 1.5rem;
+}
+
+.wp-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Strong / Bold */
+.wp-content strong,
+.wp-content b {
+  font-weight: 600;
+}
+
+/* Images */
+.wp-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+}
+
+/* Links */
+.wp-content a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 0.15s ease;
+}
+
+.wp-content a:hover {
+  color: var(--accent-hover);
+}
+
+/* Blockquotes */
+.wp-content blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 1rem 0 1rem 1.25rem;
+  margin: 2rem 0;
+  color: var(--muted-foreground);
+  font-size: 1.0625rem;
+}
+
+.wp-content blockquote p {
+  margin-bottom: 0.5rem;
+}
+
+.wp-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Lists */
+.wp-content ul {
+  list-style-type: disc;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.wp-content ol {
+  list-style-type: decimal;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.wp-content li {
+  margin-bottom: 0.4rem;
+  padding-left: 0.25rem;
+}
+
+.wp-content li::marker {
+  color: var(--muted-foreground);
+}
+
+/* Code */
+.wp-content code {
+  background: var(--muted);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.875em;
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+}
+
+.wp-content pre {
+  background: var(--muted);
+  padding: 1.25rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.wp-content pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Horizontal rule */
+.wp-content hr {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: 2.5rem 0;
+}
+
+/* Tables */
+.wp-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9375rem;
+}
+
+.wp-content th,
+.wp-content td {
+  border: 1px solid var(--border);
+  padding: 0.625rem 0.875rem;
+  text-align: left;
+}
+
+.wp-content th {
+  background: var(--muted);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.wp-content tr:hover td {
+  background: color-mix(in srgb, var(--muted) 50%, transparent);
+}
+
+.wp-content td:first-child {
+  white-space: nowrap;
+}
+
+/* Figures & captions */
+.wp-content figure {
+  margin: 2rem 0;
+}
+
+.wp-content figcaption {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  margin-top: 0.625rem;
+  line-height: 1.5;
+}
+
+/* WordPress blocks */
+.wp-content .wp-block-image {
+  margin: 2rem 0;
+}
+
+.wp-content .wp-block-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.wp-content .wp-block-quote {
+  border-left: 3px solid var(--accent);
+  padding: 1rem 0 1rem 1.25rem;
+  margin: 2rem 0;
+}
+
+.wp-content .wp-block-embed {
+  margin: 2rem 0;
+}
+
+.wp-content .wp-block-embed iframe {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.wp-content iframe {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+/* WordPress galleries */
+.wp-content .wp-block-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin: 2rem 0;
+}
+
+.wp-content .wp-block-gallery img {
+  margin: 0;
+  border-radius: 8px;
+}
+
+/* WordPress alignments */
+.wp-content .alignleft {
+  float: left;
+  margin-right: 1.5rem;
+  margin-bottom: 1rem;
+  max-width: 50%;
+}
+
+.wp-content .alignright {
+  float: right;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  max-width: 50%;
+}
+
+.wp-content .aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* WordPress separator */
+.wp-content .wp-block-separator {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: 2.5rem 0;
+}
+
+/* WordPress buttons */
+.wp-content .wp-block-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.wp-content .wp-block-button__link {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  transition: background 0.15s ease;
+}
+
+.wp-content .wp-block-button__link:hover {
+  background: var(--accent-hover);
+  color: #fff;
+}
+
+/* Clearfix for floats */
+.wp-content::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ===== EZ-TOC (Table of Contents) ===== */
+.wp-content .ez-toc-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1.25rem;
+  background: var(--muted);
+  border-radius: 12px 12px 0 0;
+  border: 1px solid var(--border);
+  border-bottom: none;
+}
+
+.wp-content .ez-toc-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.wp-content .ez-toc-toggle {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+}
+
+.wp-content .ez-toc-toggle:hover {
+  background: var(--border);
+}
+
+.wp-content .ez-toc-toggle svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--muted-foreground);
+  color: var(--muted-foreground);
+}
+
+.wp-content nav.ez-toc-hidden {
+  display: none;
+}
+
+.wp-content .ez-toc-widget-container nav,
+.wp-content nav:has(.ez-toc-list) {
+  padding: 0.75rem 1.25rem;
+  background: var(--muted);
+  border-radius: 0 0 12px 12px;
+  border: 1px solid var(--border);
+  border-top: none;
+  margin-bottom: 2rem;
+}
+
+.wp-content .ez-toc-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.wp-content .ez-toc-list li {
+  margin-bottom: 0.25rem;
+  padding-left: 0;
+}
+
+.wp-content .ez-toc-list ul {
+  list-style: none;
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.wp-content .ez-toc-link {
+  color: var(--muted-foreground);
+  text-decoration: none;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  transition: color 0.15s ease;
+}
+
+.wp-content .ez-toc-link:hover {
+  color: var(--accent);
+}
+
+/* Hide the eztoc-hide label */
+.wp-content .eztoc-hide {
+  display: none;
+}
+
+/* ===== Hide leftover AdSense ===== */
+.wp-content ins.adsbygoogle {
+  display: none !important;
+}
+
+/* ===== Sidebar TOC (desktop) ===== */
+/* Hide inline TOC on xl screens when sidebar exists */
+@media (min-width: 1280px) {
+  .toc-inline-only {
+    display: none;
+  }
+}
+
+/* Sidebar TOC widget styling */
+.sidebar-toc {
+  font-size: 0.8125rem;
+}
+
+.sidebar-toc .ez-toc-title-container {
+  padding: 0.75rem 1rem;
+  border-radius: 10px 10px 0 0;
+}
+
+.sidebar-toc .ez-toc-title {
+  font-size: 0.8125rem;
+}
+
+.sidebar-toc nav {
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 10px 10px;
+}
+
+.sidebar-toc .ez-toc-link {
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  display: block;
+  padding: 0.125rem 0;
+  transition: color 0.15s ease, padding-left 0.15s ease;
+}
+
+.sidebar-toc .ez-toc-link.toc-active {
+  color: var(--accent);
+  font-weight: 600;
+  padding-left: 0.25rem;
+}
+
+/* Sidebar scrollbar */
+#toc-sidebar .sticky::-webkit-scrollbar {
+  width: 3px;
+}
+
+#toc-sidebar .sticky::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ===== Prevent FOUC ===== */
+html.dark {
+  color-scheme: dark;
+}

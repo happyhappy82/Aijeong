@@ -1,0 +1,80 @@
+---
+import Button from "@/components/ui/Button.astro";
+import Container from "@/components/ui/Container.astro";
+---
+
+<section class="relative min-h-screen flex items-center -mt-16 md:-mt-20 overflow-hidden bg-black">
+  <!-- Background image -->
+  <div
+    class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
+    style="background-image: url('/images/hero-bg.jpg');"
+  />
+  <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+
+  <Container class="relative z-10">
+    <div class="max-w-2xl pt-20">
+      <h1
+        class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white"
+      >
+        가장 쉬운 AI 교육
+      </h1>
+
+      <p
+        class="hero-subtitle mt-5 text-lg md:text-xl font-bold text-white"
+      >
+        공공기관과 대기업이 선택한 AI 교육 파트너!
+      </p>
+
+      <p
+        class="hero-description mt-3 text-base md:text-lg text-gray-300 leading-relaxed"
+      >
+        저희는 한국에서 다양한 기관과 기업을 대상으로,
+        <br />
+        GPT부터 최신 생성형 AI까지 실무 중심의 교육을 제공합니다.
+      </p>
+
+      <div class="hero-cta mt-8">
+        <Button href="/contact/" size="lg" class="px-12">
+          지금 알아보기
+        </Button>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  .hero-title,
+  .hero-subtitle,
+  .hero-description,
+  .hero-cta {
+    opacity: 0;
+    animation: fadeInUp 0.7s ease-out forwards;
+  }
+
+  .hero-title {
+    animation-delay: 0s;
+  }
+
+  .hero-subtitle {
+    animation-delay: 0.15s;
+  }
+
+  .hero-description {
+    animation-delay: 0.25s;
+  }
+
+  .hero-cta {
+    animation-delay: 0.35s;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
