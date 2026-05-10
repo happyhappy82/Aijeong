@@ -200,6 +200,19 @@ function propertyMultiSelect(page, name) {
   return (prop.multi_select || []).map((tag) => tag.name).filter(Boolean);
 }
 
+function propertyTags(page, name) {
+  const prop = page.properties?.[name];
+  if (!prop) return [];
+  if (prop.type === "multi_select") {
+    return (prop.multi_select || []).map((tag) => tag.name).filter(Boolean);
+  }
+  const text = propertyPlainText(page, name);
+  return text
+    .split(/[,，]/)
+    .map((tag) => tag.trim())
+    .filter(Boolean);
+}
+
 function firstFileUrl(page, names) {
   for (const name of names) {
     const prop = page.properties?.[name];
@@ -584,7 +597,7 @@ async function publishNotionPage({ type, notionPageId }) {
   if (!slug) throw new Error("Slug is required or must be derivable from Title");
 
   const excerpt = propertyPlainText(page, "Excerpt");
-  const tagNames = propertyMultiSelect(page, "Tags");
+  const tagNames = propertyTags(page, "Tags");
   const ctx = {
     mediaCache: new Map(),
     bodyMediaIds: [],

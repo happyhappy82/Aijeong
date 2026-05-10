@@ -1,14 +1,22 @@
 # Aijeong Notion to WordPress Publish
 
-This workflow publishes one Notion page from the AJEONG column or education-case databases to WordPress.
+This workflow is a manual/dispatch fallback for publishing one Notion page from the AJEONG column or education-case databases to WordPress.
+
+The normal one-click path is the existing Notion database button:
+
+```text
+Notion button -> Make webhook -> GitHub/WordPress publisher
+```
+
+Do not ask the user for a WordPress account/password in a normal Codex session. WordPress credentials must already live in the downstream automation layer. If this fallback workflow is used directly, those credentials must exist as GitHub Secrets.
 
 ## Notion Flow
 
 1. Write the page in Notion and keep `Status` as `Review`.
 2. When ready, change `Status` to `Published`.
-3. Click the Notion database button. The button should set `Publish Requested` to checked.
-4. The scheduled GitHub Action scans every 5 minutes and publishes checked pages through the WordPress REST API.
-5. The Action writes the result back to Notion and clears `Publish Requested`:
+3. Upload the thumbnail to `대표 이미지` if the post needs a featured image.
+4. Click the Notion database button. The button sends the selected properties, including `대표 이미지`, to the existing webhook and also sets `Publish Requested` to checked.
+5. The publisher writes the result back to Notion and clears `Publish Requested`:
    - `WP Post ID`
    - `WP URL`
    - `Published At`
@@ -24,7 +32,7 @@ Workflow file:
 .github/workflows/notion-wp-publish.yml
 ```
 
-Required GitHub secrets:
+Required GitHub secrets for this fallback workflow:
 
 ```text
 NOTION_API_KEY
@@ -36,15 +44,6 @@ Optional GitHub variable:
 
 ```text
 AIJEONG_WP_BASE_URL=https://aijeong.com
-```
-
-Scheduled run:
-
-```text
-Every 5 minutes, scan all AJEONG Notion sources for:
-Status = Published
-Publish Requested = checked
-WP URL = empty
 ```
 
 Manual run inputs for one page:
@@ -77,15 +76,25 @@ Repository dispatch payload:
 
 ## Notion Button Wiring
 
-Set the existing `버튼` database button to this simple Notion action:
+The AJEONG column and education-case database buttons are wired to send a webhook. The selected payload should include:
 
 ```text
-Edit this page -> Publish Requested -> checked
+Title
+대표 이미지
+Date
+Excerpt
+Slug
+Status
+Tags
 ```
 
-This is the preferred path because it does not require a webhook bridge or a GitHub token inside Notion.
+The button also edits the current page:
 
-For an instant webhook path, Notion webhook actions can send POST requests and custom headers, but the payload still needs to match GitHub's dispatch API body. The reliable webhook setup is:
+```text
+Publish Requested -> checked
+```
+
+The reliable webhook setup is:
 
 ```text
 Notion button -> small webhook bridge -> GitHub repository_dispatch -> GitHub Actions -> WP REST API
@@ -115,7 +124,7 @@ GitHub token permission needed for repository dispatch:
 Contents: Read and write
 ```
 
-If a direct Notion database automation is used instead of a database button, first verify the outgoing payload through a request inspection endpoint before pointing it at GitHub.
+If a different Notion database automation is used instead of the existing database button, first verify the outgoing payload through a request inspection endpoint before pointing it at GitHub.
 
 References:
 
