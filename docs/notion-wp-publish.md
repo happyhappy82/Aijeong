@@ -6,15 +6,15 @@ This workflow publishes one Notion page from the AJEONG column or education-case
 
 1. Write the page in Notion and keep `Status` as `Review`.
 2. When ready, change `Status` to `Published`.
-3. Trigger the GitHub Action with the page ID and route type.
-4. The Action publishes through the WordPress REST API.
-5. The Action writes the result back to Notion:
+3. Click the Notion database button. The button should set `Publish Requested` to checked.
+4. The scheduled GitHub Action scans every 5 minutes and publishes checked pages through the WordPress REST API.
+5. The Action writes the result back to Notion and clears `Publish Requested`:
    - `WP Post ID`
    - `WP URL`
    - `Published At`
    - `Publish Error`
 
-The publisher refuses to run unless the Notion page status is exactly `Published`.
+The publisher refuses to publish unless the Notion page status is exactly `Published`.
 
 ## GitHub Action
 
@@ -38,11 +38,29 @@ Optional GitHub variable:
 AIJEONG_WP_BASE_URL=https://aijeong.com
 ```
 
-Manual run inputs:
+Scheduled run:
 
 ```text
+Every 5 minutes, scan all AJEONG Notion sources for:
+Status = Published
+Publish Requested = checked
+WP URL = empty
+```
+
+Manual run inputs for one page:
+
+```text
+mode: single
 type: column | edu
 notion_page_id: Notion page ID
+```
+
+Manual run inputs for scan mode:
+
+```text
+mode: scan
+type: all | column | edu
+notion_page_id: leave empty
 ```
 
 Repository dispatch payload:
@@ -59,7 +77,15 @@ Repository dispatch payload:
 
 ## Notion Button Wiring
 
-Notion webhook actions can send POST requests and custom headers, but database button payloads cannot be freely shaped into the JSON body GitHub's dispatch API requires. Because of that, the reliable production setup is:
+Set the existing `버튼` database button to this simple Notion action:
+
+```text
+Edit this page -> Publish Requested -> checked
+```
+
+This is the preferred path because it does not require a webhook bridge or a GitHub token inside Notion.
+
+For an instant webhook path, Notion webhook actions can send POST requests and custom headers, but the payload still needs to match GitHub's dispatch API body. The reliable webhook setup is:
 
 ```text
 Notion button -> small webhook bridge -> GitHub repository_dispatch -> GitHub Actions -> WP REST API

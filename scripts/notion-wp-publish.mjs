@@ -7,12 +7,14 @@ const NOTION_VERSION = "2022-06-28";
 const PRESETS = {
   column: {
     label: "AJEONG column",
+    notionDatabaseId: "2f1753ebc01381129591e3660296705f",
     notionDataSourceId: "2f1753eb-c013-8175-8432-000b321b3ed0",
     wpCategorySlug: "column",
     listUrl: "https://aijeong.com/column/",
   },
   edu: {
     label: "AJEONG education case",
+    notionDatabaseId: "35c753ebc01380679567d121741105ce",
     notionDataSourceId: "35c753eb-c013-81be-8eb6-000be4fe4adc",
     wpCategorySlug: "casestudy",
     listUrl: "https://aijeong.com/교육사례-2/",
@@ -43,6 +45,7 @@ async function readGitHubEventInputs() {
     const event = JSON.parse(raw);
     return {
       type: event.inputs?.type || event.client_payload?.type,
+      mode: event.inputs?.mode || event.client_payload?.mode,
       notionPageId:
         event.inputs?.notion_page_id || event.client_payload?.notion_page_id,
     };
@@ -311,6 +314,35 @@ async function findExistingPost(slug) {
   return Array.isArray(data) && data.length > 0 ? data[0] : null;
 }
 
+async function queryReadyPages(type) {
+  const preset = PRESETS[type];
+  const results = [];
+  let startCursor = "";
+
+  do {
+    const body = {
+      page_size: 20,
+      filter: {
+        and: [
+          { property: "Status", status: { equals: "Published" } },
+          { property: "Publish Requested", checkbox: { equals: true } },
+          { property: "WP URL", url: { is_empty: true } },
+        ],
+      },
+    };
+    if (startCursor) body.start_cursor = startCursor;
+
+    const data = await notionJson(`/databases/${preset.notionDatabaseId}/query`, {
+      method: "POST",
+      body: JSON.stringify(body),
+    });
+    results.push(...(data.results || []));
+    startCursor = data.has_more ? data.next_cursor : "";
+  } while (startCursor);
+
+  return results;
+}
+
 async function uploadMediaFromUrl(url, fallbackBase, altText, cache) {
   if (!url) return null;
   if (cache.has(url)) return cache.get(url);
@@ -499,6 +531,7 @@ async function updateNotionSuccess(pageId, post) {
           "WP URL": { url: post.link },
           "Published At": { date: { start: new Date().toISOString() } },
           "Publish Error": { rich_text: [] },
+          "Publish Requested": { checkbox: false },
         },
       }),
     });
@@ -522,6 +555,7 @@ async function updateNotionError(pageId, error) {
               },
             ],
           },
+          "Publish Requested": { checkbox: false },
         },
       }),
     });
@@ -622,9 +656,53 @@ async function publishNotionPage({ type, notionPageId }) {
   };
 }
 
+async function scanReadyPages(type) {
+  const types =
+    !type || type === "all" ? Object.keys(PRESETS) : [type];
+  const results = [];
+  const failures = [];
+
+  for (const routeType of types) {
+    if (!PRESETS[routeType]) {
+      failures.push({ type: routeType, error: `Unsupported type: ${routeType}` });
+      continue;
+    }
+
+    const pages = await queryReadyPages(routeType);
+    for (const page of pages) {
+      try {
+        results.push(
+          await publishNotionPage({
+            type: routeType,
+            notionPageId: page.id,
+          }),
+        );
+      } catch (error) {
+        await updateNotionError(page.id, error);
+        failures.push({
+          type: routeType,
+          notionPageId: page.id,
+          error: error.message,
+        });
+      }
+    }
+  }
+
+  return {
+    ok: failures.length === 0,
+    mode: "scan",
+    scannedTypes: types,
+    publishedCount: results.length,
+    failureCount: failures.length,
+    results,
+    failures,
+  };
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const eventInputs = await readGitHubEventInputs();
+  const mode = args.mode || process.env.INPUT_MODE || eventInputs.mode || "";
   const type = args.type || process.env.INPUT_TYPE || eventInputs.type;
   const notionPageId =
     args["notion-page-id"] ||
@@ -633,8 +711,12 @@ async function main() {
     eventInputs.notionPageId;
 
   try {
-    const result = await publishNotionPage({ type, notionPageId });
+    const result =
+      mode === "scan" || !notionPageId
+        ? await scanReadyPages(type)
+        : await publishNotionPage({ type, notionPageId });
     console.log(JSON.stringify(result, null, 2));
+    if (result.ok === false) process.exitCode = 1;
   } catch (error) {
     await updateNotionError(notionPageId ? normalizePageId(notionPageId) : "", error);
     console.error(error.message);

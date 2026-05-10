@@ -1,18 +1,29 @@
 name: Publish Notion page to Aijeong WordPress
 
 on:
+  schedule:
+    - cron: "*/5 * * * *"
   workflow_dispatch:
     inputs:
+      mode:
+        description: "Run one page or scan requested pages"
+        required: false
+        default: "single"
+        type: choice
+        options:
+          - single
+          - scan
       type:
         description: "Target route"
         required: true
         type: choice
         options:
+          - all
           - column
           - edu
       notion_page_id:
-        description: "Notion page ID to publish"
-        required: true
+        description: "Notion page ID to publish. Leave empty in scan mode."
+        required: false
         type: string
   repository_dispatch:
     types:
@@ -41,5 +52,6 @@ jobs:
           AIJEONG_WP_USER: ${{ secrets.AIJEONG_WP_USER }}
           AIJEONG_WP_APP_PASSWORD: ${{ secrets.AIJEONG_WP_APP_PASSWORD }}
           AIJEONG_WP_BASE_URL: ${{ vars.AIJEONG_WP_BASE_URL || 'https://aijeong.com' }}
-          INPUT_TYPE: ${{ github.event.inputs.type || github.event.client_payload.type }}
+          INPUT_MODE: ${{ github.event.inputs.mode || github.event.client_payload.mode }}
+          INPUT_TYPE: ${{ github.event.inputs.type || github.event.client_payload.type || 'all' }}
           INPUT_NOTION_PAGE_ID: ${{ github.event.inputs.notion_page_id || github.event.client_payload.notion_page_id }}
