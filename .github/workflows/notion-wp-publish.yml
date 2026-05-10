@@ -1,0 +1,45 @@
+name: Publish Notion page to Aijeong WordPress
+
+on:
+  workflow_dispatch:
+    inputs:
+      type:
+        description: "Target route"
+        required: true
+        type: choice
+        options:
+          - column
+          - edu
+      notion_page_id:
+        description: "Notion page ID to publish"
+        required: true
+        type: string
+  repository_dispatch:
+    types:
+      - publish-aijeong-wp
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Publish to WordPress
+        run: node scripts/notion-wp-publish.mjs
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          AIJEONG_WP_USER: ${{ secrets.AIJEONG_WP_USER }}
+          AIJEONG_WP_APP_PASSWORD: ${{ secrets.AIJEONG_WP_APP_PASSWORD }}
+          AIJEONG_WP_BASE_URL: ${{ vars.AIJEONG_WP_BASE_URL || 'https://aijeong.com' }}
+          INPUT_TYPE: ${{ github.event.inputs.type || github.event.client_payload.type }}
+          INPUT_NOTION_PAGE_ID: ${{ github.event.inputs.notion_page_id || github.event.client_payload.notion_page_id }}
