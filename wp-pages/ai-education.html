@@ -1,0 +1,621 @@
+<style>
+  .aj-edu-service {
+    --bg: #0a0a0a;
+    --section: #111111;
+    --card: #141414;
+    --card-2: #1a1a1a;
+    --line: #262626;
+    --line-2: #333333;
+    --text: #ffffff;
+    --muted: #a3a3a3;
+    --muted-2: #737373;
+    --accent: #6b8aff;
+    --accent-hover: #8da4ff;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    word-break: keep-all;
+  }
+
+  .aj-edu-service * {
+    box-sizing: border-box;
+  }
+
+  .aj-edu-service a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .aj-service-wrap {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+  }
+
+  .aj-service-label {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 6px 14px;
+    border: 1px solid #4b5563;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+  .aj-service-hero {
+    padding: 132px 0 76px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .aj-service-breadcrumb {
+    margin: 0 0 28px;
+    color: var(--muted-2);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .aj-service-breadcrumb span {
+    color: var(--accent);
+  }
+
+  .aj-service-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+    gap: 48px;
+    align-items: end;
+  }
+
+  .aj-service-hero h1 {
+    margin: 0;
+    max-width: 720px;
+    color: #ffffff;
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.08;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+
+  .aj-service-lead {
+    margin: 24px 0 0;
+    max-width: 680px;
+    color: #d1d5db;
+    font-size: 19px;
+    line-height: 1.8;
+  }
+
+  .aj-service-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+  }
+
+  .aj-service-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 0 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 800;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .aj-service-button.primary {
+    color: #ffffff;
+    background: var(--accent);
+  }
+
+  .aj-service-button.primary:hover {
+    background: var(--accent-hover);
+  }
+
+  .aj-service-button.secondary {
+    color: #ffffff;
+    border: 1px solid #3f3f46;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .aj-service-summary {
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--section);
+  }
+
+  .aj-service-summary h2 {
+    margin: 0 0 20px;
+    color: #ffffff;
+    font-size: 22px;
+    line-height: 1.35;
+    font-weight: 900;
+  }
+
+  .aj-service-summary dl {
+    display: grid;
+    gap: 18px;
+    margin: 0;
+  }
+
+  .aj-service-summary div {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 14px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  .aj-service-summary div:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .aj-service-summary dt {
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 900;
+  }
+
+  .aj-service-summary dd {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .aj-service-section {
+    padding: 88px 0;
+    background: var(--bg);
+  }
+
+  .aj-service-section.alt {
+    background: var(--section);
+  }
+
+  .aj-service-heading {
+    max-width: 760px;
+    margin-bottom: 42px;
+  }
+
+  .aj-service-heading.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .aj-service-heading h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.22;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+
+  .aj-service-heading p {
+    margin: 18px 0 0;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  .aj-target-grid,
+  .aj-course-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .aj-target-card,
+  .aj-course-card {
+    min-height: 210px;
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--card);
+  }
+
+  .aj-target-card span,
+  .aj-course-card span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 32px;
+    margin-bottom: 20px;
+    padding: 0 12px;
+    border-radius: 999px;
+    color: var(--accent);
+    background: rgba(107, 138, 255, 0.1);
+    font-size: 13px;
+    font-weight: 900;
+  }
+
+  .aj-target-card h3,
+  .aj-course-card h3 {
+    margin: 0 0 12px;
+    color: #ffffff;
+    font-size: 21px;
+    line-height: 1.35;
+    font-weight: 900;
+  }
+
+  .aj-target-card p,
+  .aj-course-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .aj-course-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .aj-course-card {
+    min-height: 184px;
+    background: var(--bg);
+  }
+
+  .aj-process {
+    display: grid;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .aj-process-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 28px;
+    padding: 26px 30px;
+    border-top: 1px solid var(--line);
+    background: var(--card);
+  }
+
+  .aj-process-row:first-child {
+    border-top: 0;
+  }
+
+  .aj-process-row strong {
+    color: var(--accent);
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 900;
+  }
+
+  .aj-process-row h3 {
+    margin: 0 0 8px;
+    color: #ffffff;
+    font-size: 21px;
+    line-height: 1.35;
+    font-weight: 900;
+  }
+
+  .aj-process-row p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .aj-output {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  .aj-output-card {
+    padding: 32px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--card);
+  }
+
+  .aj-output-card h3 {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 900;
+  }
+
+  .aj-output-card ul {
+    display: grid;
+    gap: 13px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .aj-output-card li {
+    position: relative;
+    padding-left: 18px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .aj-output-card li::before {
+    content: "";
+    position: absolute;
+    top: 0.72em;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 99px;
+    background: var(--accent);
+  }
+
+  .aj-output-note {
+    display: grid;
+    align-content: center;
+    min-height: 100%;
+    padding: 38px;
+    border: 1px solid rgba(107, 138, 255, 0.35);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(107, 138, 255, 0.16), rgba(107, 138, 255, 0.05));
+  }
+
+  .aj-output-note h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.22;
+    font-weight: 900;
+  }
+
+  .aj-output-note p {
+    margin: 18px 0 0;
+    color: #d1d5db;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .aj-service-cta {
+    padding: 88px 0 104px;
+    background: var(--section);
+    text-align: center;
+  }
+
+  .aj-service-cta h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.22;
+    font-weight: 900;
+  }
+
+  .aj-service-cta p {
+    margin: 18px auto 0;
+    max-width: 680px;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  .aj-service-cta .aj-service-actions {
+    justify-content: center;
+  }
+
+  @media (max-width: 920px) {
+    .aj-service-hero-grid,
+    .aj-target-grid,
+    .aj-course-grid,
+    .aj-output {
+      grid-template-columns: 1fr;
+    }
+
+    .aj-service-hero {
+      padding-top: 108px;
+    }
+
+    .aj-service-summary {
+      max-width: none;
+    }
+
+    .aj-process-row {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .aj-service-wrap {
+      width: min(100% - 24px, 1120px);
+    }
+
+    .aj-service-hero,
+    .aj-service-section,
+    .aj-service-cta {
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+
+    .aj-service-button {
+      width: 100%;
+    }
+
+    .aj-service-summary div {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+  }
+</style>
+
+<main class="aj-edu-service">
+  <section class="aj-service-hero">
+    <div class="aj-service-wrap">
+      <p class="aj-service-breadcrumb">제공 서비스 <span>/ AI 교육</span></p>
+      <div class="aj-service-hero-grid">
+        <div>
+          <span class="aj-service-label">AI EDUCATION</span>
+          <h1>AI 교육 서비스</h1>
+          <p class="aj-service-lead">
+            조직의 업무에 맞춰 AI를 이해하고, 직접 써보고, 결과물까지 만들어보는 실습형 교육입니다.
+            단순한 툴 소개가 아니라 교육생이 수업 이후에도 업무에서 다시 활용할 수 있는 흐름을 설계합니다.
+          </p>
+          <div class="aj-service-actions">
+            <a class="aj-service-button primary" href="https://aijeong.com/contact/">교육 문의하기</a>
+            <a class="aj-service-button secondary" href="https://aijeong.com/%ea%b5%90%ec%9c%a1%ec%82%ac%eb%a1%80-2/">교육사례 보기</a>
+          </div>
+        </div>
+
+        <aside class="aj-service-summary" aria-label="AI 교육 서비스 요약">
+          <h2>서비스 요약</h2>
+          <dl>
+            <div>
+              <dt>대상</dt>
+              <dd>공공기관, 기업, 협회, 병원, 학교 등 AI 활용 교육이 필요한 조직</dd>
+            </div>
+            <div>
+              <dt>방식</dt>
+              <dd>강의, 실습, 과제 제출, 결과물 피드백을 조합한 맞춤형 교육</dd>
+            </div>
+            <div>
+              <dt>결과</dt>
+              <dd>교육생이 직접 만든 문서, 프롬프트, 업무 적용 아이디어를 남기는 교육</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="aj-service-section">
+    <div class="aj-service-wrap">
+      <div class="aj-service-heading">
+        <span class="aj-service-label">TARGET</span>
+        <h2>이런 조직에 적합합니다</h2>
+        <p>AI를 써야 한다는 필요성은 있지만, 어떤 업무부터 적용해야 할지 막혀 있는 조직을 위해 설계합니다.</p>
+      </div>
+
+      <div class="aj-target-grid">
+        <article class="aj-target-card">
+          <span>01</span>
+          <h3>전 직원 AI 기초 교육</h3>
+          <p>AI를 처음 접하는 구성원도 이해할 수 있도록 개념, 질문법, 주의사항을 쉽게 다룹니다.</p>
+        </article>
+        <article class="aj-target-card">
+          <span>02</span>
+          <h3>직무별 실무 활용 교육</h3>
+          <p>기획, 홍보, 행정, 영업, 상담 등 실제 업무 흐름에 맞춰 예시와 실습을 구성합니다.</p>
+        </article>
+        <article class="aj-target-card">
+          <span>03</span>
+          <h3>AI 업무 전환 교육</h3>
+          <p>반복 업무를 줄이고 AI를 업무 프로세스에 적용하기 위한 실습과 적용 아이디어를 정리합니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="aj-service-section alt">
+    <div class="aj-service-wrap">
+      <div class="aj-service-heading">
+        <span class="aj-service-label">CURRICULUM</span>
+        <h2>교육에서 다루는 내용</h2>
+        <p>기초 이해부터 업무 산출물 제작까지, 교육 목적에 따라 필요한 모듈을 조합합니다.</p>
+      </div>
+
+      <div class="aj-course-grid">
+        <article class="aj-course-card">
+          <span>기초</span>
+          <h3>AI 리터러시와 프롬프트</h3>
+          <p>생성형 AI의 기본 원리, 질문을 구체화하는 방법, 답변을 검토하는 기준을 다룹니다.</p>
+        </article>
+        <article class="aj-course-card">
+          <span>문서</span>
+          <h3>업무 문서 작성 실습</h3>
+          <p>보고서, 공문, 보도자료, 이메일, 회의록처럼 실무에서 자주 쓰는 문서 초안을 만들어봅니다.</p>
+        </article>
+        <article class="aj-course-card">
+          <span>조사</span>
+          <h3>자료조사와 근거 정리</h3>
+          <p>AI를 활용해 자료를 찾고 요약하되, 출처와 사실관계를 검토하는 방식까지 함께 연습합니다.</p>
+        </article>
+        <article class="aj-course-card">
+          <span>자동화</span>
+          <h3>업무 자동화 기획</h3>
+          <p>반복 업무를 분해하고, AI와 자동화 도구로 바꿀 수 있는 흐름을 찾아봅니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="aj-service-section">
+    <div class="aj-service-wrap">
+      <div class="aj-service-heading">
+        <span class="aj-service-label">PROCESS</span>
+        <h2>교육 운영 방식</h2>
+        <p>대상자의 수준과 업무 맥락을 먼저 확인한 뒤, 교육 현장에서 바로 따라 할 수 있는 실습으로 운영합니다.</p>
+      </div>
+
+      <div class="aj-process">
+        <article class="aj-process-row">
+          <strong>STEP 01</strong>
+          <div>
+            <h3>사전 수요 확인</h3>
+            <p>교육생의 AI 사용 경험, 자주 막히는 업무, 기대하는 결과물을 사전에 확인합니다.</p>
+          </div>
+        </article>
+        <article class="aj-process-row">
+          <strong>STEP 02</strong>
+          <div>
+            <h3>맞춤형 커리큘럼 구성</h3>
+            <p>대상 직무와 교육 시간에 맞춰 개념 설명, 사례, 실습 난이도, 과제 흐름을 조정합니다.</p>
+          </div>
+        </article>
+        <article class="aj-process-row">
+          <strong>STEP 03</strong>
+          <div>
+            <h3>실습 중심 교육 진행</h3>
+            <p>예시 프롬프트와 실습 자료를 활용해 교육생이 직접 결과물을 만들어보는 방식으로 진행합니다.</p>
+          </div>
+        </article>
+        <article class="aj-process-row">
+          <strong>STEP 04</strong>
+          <div>
+            <h3>결과물과 적용 아이디어 정리</h3>
+            <p>교육 후 바로 활용할 수 있는 프롬프트, 문서, 업무 적용 아이디어를 정리합니다.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="aj-service-section alt">
+    <div class="aj-service-wrap">
+      <div class="aj-output">
+        <div class="aj-output-note">
+          <h3>교육생이 가져가는 것은<br>지식이 아니라 사용 경험입니다</h3>
+          <p>AI를 설명으로만 듣는 것이 아니라, 실제 업무 자료와 비슷한 상황에서 직접 결과물을 만들어보도록 설계합니다.</p>
+        </div>
+        <div class="aj-output-card">
+          <h3>교육 결과물 예시</h3>
+          <ul>
+            <li>내 업무에 맞는 프롬프트 작성 패턴</li>
+            <li>보고서, 공문, 보도자료 등 문서 초안</li>
+            <li>회의록, 이메일, 상담문구 등 반복 업무 템플릿</li>
+            <li>자료조사 결과를 검토하는 체크리스트</li>
+            <li>조직 안에서 적용할 수 있는 AI 업무 아이디어</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aj-service-cta">
+    <div class="aj-service-wrap">
+      <h2>우리 조직에 맞는 AI 교육이 필요하다면</h2>
+      <p>교육 대상자, 직무, 교육 시간, 목표 결과물을 알려주시면 그에 맞는 교육 흐름과 실습안을 제안드리겠습니다.</p>
+      <div class="aj-service-actions">
+        <a class="aj-service-button primary" href="https://aijeong.com/contact/">교육 문의하기</a>
+        <a class="aj-service-button secondary" href="https://aijeong.com/%ea%b5%90%ec%9c%a1%ec%82%ac%eb%a1%80-2/">교육사례 확인하기</a>
+      </div>
+    </div>
+  </section>
+</main>
