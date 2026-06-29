@@ -2,11 +2,6 @@ name: Publish AI education service page
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - "wp-pages/ai-education.html"
-      - "scripts/publish-wp-page.mjs"
-      - ".github/workflows/publish-ai-education-page.yml"
 
 permissions:
   contents: read
@@ -22,7 +17,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
 
       - name: Publish AI education page to WordPress
         run: node scripts/publish-wp-page.mjs
