@@ -1,11 +1,19 @@
 /* The existing theme owns the navigation, dark mode and scroll behavior. */
 (function () {
+  function selectInterest(value) {
+    var input = Array.from(document.querySelectorAll('input[name="interest"]')).find(function (item) {
+      return item.value === value;
+    });
+    if (input) input.checked = true;
+  }
+  var services = { geo: 'GEO', 'website-renewal': '웹사이트 리뉴얼', 'ai-education': 'AI교육' };
+  var selectedService = new URLSearchParams(window.location.search).get('service');
+  if (Object.prototype.hasOwnProperty.call(services, selectedService)) {
+    selectInterest(services[selectedService]);
+  }
   document.querySelectorAll('[data-interest]').forEach(function (link) {
     link.addEventListener('click', function () {
-      var input = Array.from(document.querySelectorAll('input[name="interest"]')).find(function (item) {
-        return item.value === link.dataset.interest;
-      });
-      if (input) input.checked = true;
+      selectInterest(link.dataset.interest);
     });
   });
 

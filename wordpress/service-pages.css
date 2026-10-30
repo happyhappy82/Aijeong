@@ -1,0 +1,74 @@
+/* Service details use the same typography, accent, header and footer as the home. */
+.aj-service{background:#0a0a0a}
+.aj-service-hero{padding:112px 0 88px;border-bottom:1px solid #222;background:#0a0a0a}
+.aj-service-breadcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:48px;font-size:13px;line-height:1.8;color:#9ca3af}
+.aj-service-breadcrumb a:hover{color:#fff}
+.aj-service-breadcrumb [aria-current]{color:#d1d5db}
+.aj-service-hero h1{max-width:1000px;margin:0;color:#fff;font-size:clamp(36px,4.6vw,64px);font-weight:800;line-height:1.2;letter-spacing:-.035em}
+.aj-service-lead{max-width:820px;margin:28px 0 0;font-size:19px;line-height:1.85;color:#b6bbc4}
+.aj-service-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.aj-service-caption{margin:40px 0 0;color:#9ca3af;font-size:13px;line-height:1.8}
+.aj-service-heading{max-width:800px;margin-bottom:48px}
+.aj-service-heading h2,.aj-service-contact h2{margin:0;font-size:clamp(30px,3.5vw,46px);font-weight:800;line-height:1.35;letter-spacing:-.035em;color:#fff}
+.aj-service-heading>p{max-width:680px;margin:20px 0 0;font-size:17px;line-height:1.85;color:#9ca3af}
+.aj-service-split{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:start}
+.aj-service-split .aj-service-heading{margin-bottom:0}
+.aj-service-rows article{display:grid;grid-template-columns:32px minmax(0,1fr);gap:18px;padding:28px 0;border-top:1px solid #333}
+.aj-service-rows article:first-child{padding-top:0;border-top:0}
+.aj-service-rows article>span{color:var(--accent);font-size:13px;font-weight:700;line-height:1.8}
+.aj-service-rows h3{margin:0 0 12px;font-size:21px;font-weight:700;line-height:1.5;letter-spacing:-.02em}
+.aj-service-rows p,.aj-service-prose p{margin:0;color:#aab0ba;font-size:16px;line-height:1.9}
+.aj-service-prose p+p{margin-top:24px}
+.aj-service-prose .geo-link{margin-top:28px}
+.aj-search-foundation{max-width:1000px;margin-top:44px}
+.aj-search-upper{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.aj-search-upper article{border:1px solid #333;border-radius:12px;padding:32px;background:#0a0a0a}
+.aj-search-foundation article>span{display:block;color:var(--accent);font-size:14px;font-weight:750;letter-spacing:.04em;margin-bottom:14px}
+.aj-search-foundation h3{margin:0 0 12px;font-size:22px;line-height:1.5;font-weight:700}
+.aj-search-foundation p{margin:0;color:#aab0ba;font-size:15px;line-height:1.85}
+.aj-search-base{display:grid;grid-template-columns:80px 1fr;gap:24px;align-items:center;border:1px solid color-mix(in srgb,var(--accent) 55%,#333);border-radius:12px;padding:32px;background:color-mix(in srgb,var(--accent) 7%,#0a0a0a)}
+.aj-search-base>span{margin-bottom:0!important;font-size:20px!important}
+.aj-service-evidence{max-width:960px;margin-top:32px;padding-left:24px;border-left:2px solid var(--accent)}
+.aj-service-evidence p{font-size:15px;line-height:1.9;color:#aab0ba;margin:0 0 16px}
+.aj-service-evidence .geo-link{font-size:13px}
+.aj-service-deliverables{display:grid;gap:0;margin:0}
+.aj-service-deliverables>div{display:grid;grid-template-columns:220px 1fr;gap:32px;border-top:1px solid #333;padding:26px 0}
+.aj-service-deliverables>div:last-child{border-bottom:1px solid #333}
+.aj-service-deliverables dt{font-size:19px;line-height:1.65;font-weight:700;color:#fff}
+.aj-service-deliverables dd{margin:0;color:#aab0ba;font-size:16px;line-height:1.9}
+.aj-service-split .aj-service-deliverables>div{display:block}
+.aj-service-split .aj-service-deliverables dt{margin-bottom:12px}
+.aj-service-note{margin:24px 0 0;color:#9ca3af;font-size:13px;line-height:1.85}
+.aj-service-faq details{border-top:1px solid #333;padding:24px 0}
+.aj-service-faq details:last-child{border-bottom:1px solid #333}
+.aj-service-faq summary{font-size:18px;line-height:1.65;font-weight:650;cursor:pointer;color:#e5e7eb;list-style-position:outside;margin-left:20px;padding-left:4px}
+.aj-service-faq summary::marker{color:var(--accent);font-size:13px}
+.aj-service-faq details[open] summary{color:var(--accent)}
+.aj-service-faq details p{margin:18px 0 0;color:#aab0ba;font-size:15px;line-height:1.95}
+.aj-service-faq summary:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+.aj-service-contact{text-align:center;border-top:1px solid #262626;background:#111}
+.aj-service-contact h2{max-width:860px;margin-inline:auto}
+.aj-service-contact p{color:#aab0ba;font-size:17px;line-height:1.85;margin:24px 0 30px}
+.aj-service-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;list-style:none;padding:0;margin:0}
+.aj-service-steps li{border-top:1px solid #444;padding-top:24px}
+.aj-service-steps li>span{color:var(--accent);font-size:14px;font-weight:700}
+.aj-service-steps h3{margin:20px 0 12px;font-size:20px;font-weight:700;line-height:1.5}
+.aj-service-steps p{margin:0;color:#aab0ba;font-size:15px;line-height:1.9}
+.aj-renewal-comparison{border:1px solid #333;border-radius:12px;overflow:hidden}
+.aj-renewal-comparison>div{display:grid;grid-template-columns:1fr 1.4fr;border-top:1px solid #333}
+.aj-renewal-comparison>div:first-child{border-top:0;background:#161616}
+.aj-renewal-comparison p,.aj-renewal-comparison span{margin:0;padding:24px 28px;font-size:17px;line-height:1.8}
+.aj-renewal-comparison p:first-child{color:#9ca3af}
+.aj-renewal-comparison p:last-child,.aj-renewal-comparison span:last-child{border-left:1px solid #333;color:#e5e7eb}
+.aj-renewal-comparison .aj-comparison-labels span{font-size:13px;font-weight:700;padding-block:16px;color:#9ca3af}
+.aj-renewal-comparison .aj-comparison-labels span:last-child{color:var(--accent)}
+.aj-education-topics{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.aj-education-topics article{padding:32px;border:1px solid #333;border-radius:12px;background:#0a0a0a}
+.aj-education-topics article>span{display:block;color:var(--accent);font-size:13px;font-weight:700;margin-bottom:16px}
+.aj-education-topics h3{margin:0 0 16px;font-size:24px;font-weight:700;line-height:1.4}
+.aj-education-topics p{margin:0;color:#aab0ba;font-size:16px;line-height:1.85}
+.aj-education-topics .aj-topic-output{margin-top:28px;padding-top:20px;border-top:1px solid #333;font-size:12px;color:#9ca3af}
+.aj-topic-output strong{display:block;margin-top:10px;color:#d1d5db;font-size:14px;font-weight:550}
+@media(max-width:1023px){.aj-service-split{grid-template-columns:1fr;gap:40px}.aj-service-steps{grid-template-columns:1fr 1fr;gap:32px}.aj-service-hero{padding-top:88px}}
+@media(max-width:767px){.aj-service-hero{padding-block:64px}.aj-service-breadcrumb{margin-bottom:36px;font-size:12px;gap:9px}.aj-service-hero h1{font-size:36px}.aj-service-lead{font-size:16px}.aj-service-lead br{display:none}.aj-service-caption{font-size:12px;margin-top:30px}.aj-service-heading{margin-bottom:32px}.aj-service-heading h2,.aj-service-contact h2{font-size:30px}.aj-service-heading>p{font-size:16px}.aj-service-rows h3{font-size:19px}.aj-search-upper{gap:12px}.aj-search-upper article{padding:24px}.aj-search-foundation h3{font-size:19px}.aj-search-base{grid-template-columns:1fr;gap:12px;padding:24px}.aj-service-deliverables>div{grid-template-columns:1fr;gap:12px}.aj-renewal-comparison p,.aj-renewal-comparison span{font-size:14px;padding:20px}.aj-education-topics{grid-template-columns:1fr}.aj-service-contact p{font-size:16px}}
+@media(max-width:479px){.aj-service-hero h1{font-size:32px}.aj-service-actions{flex-direction:column;align-items:stretch}.aj-service-heading h2,.aj-service-contact h2{font-size:28px}.aj-service-rows article{grid-template-columns:24px 1fr;gap:12px}.aj-service-rows p,.aj-service-prose p,.aj-service-deliverables dd{font-size:15px}.aj-search-upper{grid-template-columns:1fr}.aj-search-foundation p br{display:none}.aj-service-evidence{padding-left:18px}.aj-service-steps{gap:24px 16px}.aj-service-steps h3{font-size:17px}.aj-service-steps p{font-size:13px}.aj-service-steps p br{display:none}.aj-renewal-comparison p,.aj-renewal-comparison span{font-size:13px;padding:16px 12px}.aj-education-topics article{padding:26px 22px}.aj-education-topics h3{font-size:22px}.aj-service-faq summary{font-size:16px}.aj-service-contact .geo-button{width:100%}}

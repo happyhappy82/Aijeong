@@ -1,0 +1,47 @@
+# 에이정 서비스 상세 페이지
+
+기준일: 2026-10-31 / 로컬 시안·테마 1.8.0 / 운영 업로드 전
+
+## 페이지별 기획
+
+| 서비스 | 주소 | 주요 내용 | 문의 연결 |
+|---|---|---|---|
+| GEO | `/geo/` | 브랜드 정보 진단 → SEO 기반과 AEO·GEO의 관계 → 질문·사이트·콘텐츠 작업 → 작업 기록 → FAQ | `/?service=geo#contact` |
+| 웹사이트 리뉴얼 | `/website-renewal/` | 전달이 어려운 부분 → 개선 방향 예시 → 기획·디자인·개발·기존 주소 점검 → 진행 순서 → FAQ | `/?service=website-renewal#contact` |
+| AI교육 | `/ai-education/` | 실제 업무 실습 → 대상별 출발점 → 교육 주제와 결과물 예시 → 진행 방식 → 사전 준비 → FAQ | `/?service=ai-education#contact` |
+
+각 서비스의 주요 CTA는 ‘문의하기’로 통일한다. 상세 정보로 이동하는 보조 링크는 목적을 설명한다. 홈페이지에는 세 서비스 카드와 상세 링크를 배치하고, 상단·모바일·푸터 서비스 메뉴도 각 상세 주소로 연결한다. 상세 페이지의 문의 버튼은 홈페이지 문의 양식으로 이동해 해당 서비스를 선택한다. 기존 이메일 초안 방식은 유지하며 자동으로 메일을 보내지 않는다.
+
+기존 다크 배경·Pretendard·강조색·헤더·푸터를 재사용한다. 단순히 같은 카드에 이름만 바꾸지 않고 GEO는 SEO 기반 도식, 리뉴얼은 개선 방향 비교, 교육은 업무별 실습 예시로 구성한다. 가상 성과·고객 후기·확정되지 않은 가격과 교육 시간은 넣지 않는다. 리뉴얼 제작 방식을 ‘AI로 제작’, ‘빠르고 저렴’으로 홍보하지 않는다.
+
+## GEO·AEO와 SEO 설명의 근거
+
+핵심 제목은 ‘GEO·AEO의 기본은 SEO입니다’다. 에이정의 작업 방식으로 SEO 기반 확인과 질문에 답하는 콘텐츠·브랜드 정보 정비를 함께 제안한다. SEO 상위 순위를 모든 AI 노출의 필수조건으로 표현하지 않으며, SEO 순위만으로 AI 답변 노출을 보장하지 않는다.
+
+- [Google Search Central — AI features and your website](https://developers.google.com/search/docs/appearance/ai-features): Google의 AI 검색 기능에도 기존 SEO 기본 원칙이 적용된다. AI Overviews·AI Mode의 참고 링크 자격에는 색인과 스니펫 표시 가능 여부가 포함되며 별도의 특수한 기술 요건은 없다. 해당 설명을 Google 범위로 한정해 페이지에 출처를 연결했다. 문서 표시 업데이트일 2025-12-10 / 확인일 2026-10-31
+- [Microsoft Bing — Keeping Content Discoverable with Sitemaps in AI Powered Search](https://blogs.bing.com/webmaster/2025/7/Keeping-Content-Discoverable-with-Sitemaps-in-AI-Powered-Search/): Bing의 AI 검색에서도 수집 가능 여부와 색인, 정확한 갱신 정보가 중요하다는 설명을 확인했다. 발행일 2025-07-31 / 확인일 2026-10-31
+
+공식 문서는 각 플랫폼의 안내다. 모든 AI 서비스가 동일하게 처리한다는 근거로 확대하지 않는다. 이번에는 AI 언급률 실측이나 성과 검증을 하지 않았다.
+
+## WordPress 테마 업로드 방식
+
+- 각 페이지는 `page-geo.php`, `page-website-renewal.php`, `page-ai-education.php`를 사용한다. 기존 AI교육 주소를 재사용한다.
+- `inc/service-pages.php`가 서비스 이름·메타 설명·문의 주소와 Service 구조화 데이터를 담당한다. 기존 `inc/seo.php`에서 서비스별 description과 canonical을 사용한다.
+- 활성 테마의 ZIP 교체에도 대응하도록, 테마 전환 또는 관리자 첫 접속 시 관리자 권한으로 누락된 서비스 페이지만 생성한다. 기존 페이지의 본문·상태·템플릿 설정은 덮어쓰지 않는다. 별도 재저장이나 URL 규칙 설치 없이 일반 WordPress 페이지 경로를 쓴다.
+- 생성 완료 상태를 옵션에 기록해 반복 생성하지 않는다. 기존 페이지가 비공개·초안이면 임의로 발행하지 않는다.
+- 로컬 복사 DB에는 GEO·리뉴얼 2개를 생성하고 기존 AI교육 페이지 레코드는 보존한다. 운영 사이트에는 업로드하지 않는다.
+- 기존 블로그·교육사례·칼럼·AX사례 게시물과 페이지 템플릿은 변경하지 않는다. AI교육 상세 템플릿은 이번 사용자 요청의 수정 대상이다.
+
+## 확인 결과 — 2026-10-31
+
+- PHP 41개 문법과 ZIP 최상위 폴더·압축 무결성 통과
+- 홈과 세 서비스 페이지 실제 HTTP 200, 각 단일 H1·main 영역 확인
+- 서비스별 제목·description/OG/Twitter 설명·단일 canonical·Service JSON-LD 확인. 테마와 WordPress 기본 출력이 중복되던 canonical은 서비스 페이지에 한해 기본 출력을 제외해 수정
+- 홈의 확정 메인 카피·제목·메타 설명 보존, 세 서비스 카드와 각 페이지 메뉴 연결 및 ‘GEO 상담하기’ 제거 확인
+- 상세별 두 ‘문의하기’ 링크가 해당 service 쿼리와 홈 contact 위치를 가리킴. JS 구문 검사와 쿼리 3종·알 수 없는 값의 기본 선택·CTA 선택 로직 확인
+- 로컬에서 누락된 GEO·리뉴얼 페이지 2개 생성, 생성 함수를 반복 호출해 기존 AI교육 레코드 보존 확인
+- 주요 CSS·JS 4개 HTTP 200, ZIP 안 서비스 템플릿과 정본 일치 확인
+- 원본 헤더·푸터·기본 CSS와 기존 블로그·교육사례·칼럼·AX사례·단일 게시물 템플릿 8개 바이트 동일 확인
+- 브라우저 제어 도구의 native pipe·browser host 연결 실패로 화면·모바일·실제 브라우저 클릭 검수는 미완료. 실제 WordPress HTML/HTTP와 JS 로직 검증을 구분한다
+
+업로드 패키지: `_local/package/aijeong-theme-v1.8.0-geo-20261031.zip` / 운영 업로드 미수행

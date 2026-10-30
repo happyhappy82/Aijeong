@@ -14,12 +14,12 @@ python3 wordpress/build-theme.py \
 생성 결과:
 
 - `_local/package/aijeong-theme/`: 업로드 패키지의 실제 테마 소스
-- `_local/package/aijeong-theme-v1.7.5-geo-20261031.zip`: WordPress 테마 업로드용 ZIP
+- `_local/package/aijeong-theme-v1.8.0-geo-20261031.zip`: WordPress 테마 업로드용 ZIP
 - `_local/package/build-report.json`: 변경 파일과 PHP 검사 결과
 
 ZIP의 최상위 폴더는 기존과 같은 `aijeong-theme`입니다. 관리자에서 외모 → 테마 → 새 테마 추가 → 테마 업로드로 올리고 기존 테마 교체를 선택하는 방식입니다. 운영 업로드는 별도 사용자 지시에 따라 수행합니다.
 
-홈에서는 원래 CSS·JS를 그대로 불러오고 GEO 콘텐츠용 스타일과 폼 스크립트만 추가합니다. `get_header()`와 `get_footer()`를 사용하므로 헤더의 분석 코드·`wp_head`, 푸터의 채널톡·`wp_footer`도 그대로 유지합니다. 기존 블로그·칼럼·교육사례·문의 페이지 PHP는 수정하지 않습니다. 문의 폼은 이메일 초안 방식입니다.
+홈과 서비스 페이지에서는 원래 CSS·JS를 그대로 불러오고 콘텐츠용 스타일을 추가합니다. `get_header()`와 `get_footer()`를 사용하므로 헤더의 분석 코드·`wp_head`, 푸터의 채널톡·`wp_footer`도 그대로 유지합니다. 기존 블로그·칼럼·교육사례·문의 페이지 PHP는 수정하지 않습니다. AI교육 상세 템플릿은 사용자 요청에 따라 개편합니다. 문의 폼은 이메일 초안 방식입니다.
 
 현재 수정 파일:
 
@@ -28,6 +28,9 @@ ZIP의 최상위 폴더는 기존과 같은 `aijeong-theme`입니다. 관리자�
 - `geo-home.js`: 서비스별 문의 유형 선택과 이메일 초안 폼
 - `geo-home.php`: 기존 공통 자산을 유지하는 홈페이지 전용 enqueue
 - `build-theme.py`: 기존 테마에 위 변경을 반영하고 PHP 검사 후 ZIP 생성
+- `page-geo.php`, `page-website-renewal.php`, `page-ai-education.php`: 서비스 상세 페이지
+- `service-pages.php`, `service-pages.css`, `template-parts/service-contact.php`: 서비스 메타·누락 페이지 생성·공통 디자인과 문의 연결
+- [SERVICE_PAGES.md](SERVICE_PAGES.md): 서비스별 콘텐츠 기획과 공식 근거
 
 기존 테마에 포함된 운영 설정을 Git에 새로 저장하지 않도록 완성 패키지와 로컬 WordPress DB는 `_local/`에 두고 Git에서 제외합니다. 빌드 스크립트와 새 오버레이만 기록합니다. 기본 테마는 수정하지 않습니다.
 
@@ -40,6 +43,16 @@ php -S 127.0.0.1:18266 -t _local/wp _local/wp/router.php
 ```
 
 접속: http://127.0.0.1:18266/
+
+## 1.8.0 — 서비스 상세 3페이지와 문의 연결
+
+서비스를 GEO·웹사이트 리뉴얼·AI교육으로 구성하고 각 상세 페이지와 메타 설명을 작성했습니다. GEO 페이지는 ‘GEO·AEO의 기본은 SEO입니다’를 중심으로 검색 가능한 사이트와 고객 질문에 답하는 콘텐츠의 관계를 설명하며 Google 공식 안내를 연결합니다. 리뉴얼은 기획·디자인·개발과 기존 주소 점검, AI교육은 직무와 수준별 실습을 안내합니다.
+
+메뉴와 홈페이지 서비스 카드에서 각 페이지로 이동합니다. 주요 CTA는 ‘문의하기’로 통일했고 상세 페이지에서 문의하면 홈페이지 양식에 해당 서비스가 선택됩니다. 확정 메인 카피와 홈 title/meta는 유지합니다.
+
+ZIP 교체 후 관리자 첫 접속 시 누락된 서비스 페이지만 생성합니다. 기존 페이지의 본문과 상태는 보존합니다. 로컬 복사 DB에 GEO·리뉴얼 2개를 추가하며 운영 업로드는 수행하지 않습니다. 상세한 범위와 근거는 [서비스 기획](SERVICE_PAGES.md)을 참고하세요.
+
+PHP 41개·ZIP 무결성, 홈과 상세 3페이지의 HTTP 200·제목/설명·단일 canonical·문의 연결을 확인했습니다. 쿼리로 문의 서비스가 선택되는 JS 로직과 누락 페이지 생성의 반복 실행·기존 AI교육 레코드 보존도 확인했습니다. 브라우저 제어 도구 연결 실패로 PC·모바일 화면과 실제 브라우저 클릭 검수는 미완료입니다.
 
 ## 1.7.5 — 확정 메인 카피 반영
 
