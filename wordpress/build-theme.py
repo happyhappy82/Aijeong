@@ -13,7 +13,7 @@ import zipfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-VERSION = '1.7.3'
+VERSION = '1.7.4'
 DESCRIPTION = 'GEO, 브랜드가 AI에 보이도록'
 TITLE = '에이정 | AI가 선택하는 브랜드, GEO·AEO 마케팅'
 META_DESCRIPTION = '에이정은 GEO·AEO 기반 AI 검색 마케팅, 브랜드 콘텐츠 개선, 웹사이트 리뉴얼을 통해 AI 검색에서 브랜드가 정확하게 소개되도록 돕습니다'
@@ -64,13 +64,8 @@ def build(base, output):
             array('label' => '웹사이트 리뉴얼', 'href' => '/#website-renewal'),
             array('label' => 'AI 교육', 'href' => '/ai-education/'),
         )),
-        array('label' => '프로젝트', 'href' => '/#projects'),
-        array('label' => '인사이트', 'href' => '/135-2/', 'children' => array(
-            array('label' => '블로그', 'href' => '/135-2/'),
-            array('label' => '칼럼', 'href' => '/column/'),
-            array('label' => '교육사례', 'href' => '/교육사례-2/'),
-            array('label' => 'AX사례', 'href' => '/ax사례/'),
-        )),
+        array('label' => '블로그', 'href' => '/135-2/'),
+        array('label' => '교육사례', 'href' => '/교육사례-2/'),
         array('label' => '에이정 소개', 'href' => '/#about'),
         array('label' => '문의하기', 'href' => '/#contact'),
     );
@@ -104,7 +99,7 @@ def build(base, output):
         if result.returncode:
             raise RuntimeError('PHP syntax check failed for ' + str(path.relative_to(theme)))
 
-    archive = output / ('aijeong-theme-v' + VERSION + '-geo-20261030.zip')
+    archive = output / ('aijeong-theme-v' + VERSION + '-geo-20261031.zip')
     with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as bundle:
         for path in sorted(theme.rglob('*')):
             if path.is_file():

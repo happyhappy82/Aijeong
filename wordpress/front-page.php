@@ -77,16 +77,6 @@ $site = aijeong_get_site_config();
         </div>
     </section>
 
-    <section class="geo-section" id="projects" aria-labelledby="geo-project-heading">
-        <div class="geo-wrap geo-wrap-narrow">
-            <div class="geo-section-heading"><span class="geo-section-badge">진행 중인 작업</span><h2 id="geo-project-heading">GEO 중심으로 바꾸는<br>에이정 홈페이지</h2><p>브랜드 소개와 서비스 구성을 GEO에 맞게 정리하고 있습니다</p></div>
-            <article class="geo-project">
-                <div class="geo-project-brand"><img src="<?php echo esc_url($theme_uri); ?>/assets/images/logo/logo-white.svg" alt="에이정" width="180" height="68"><span>GEO · 브랜드 정보 · 웹사이트</span></div>
-                <div class="geo-project-copy"><span class="geo-card-label">진행 중인 프로젝트</span><h3>에이정 브랜드 웹사이트 리뉴얼</h3><p>AI 검색에서 어떤 일을 하는 브랜드인지 알 수 있도록 회사 소개와 서비스 설명을 바꾸고 있습니다</p><p class="geo-project-scope">브랜드 메시지 · 서비스 기획 · 문의 동선</p></div>
-            </article>
-        </div>
-    </section>
-
     <section class="geo-section geo-section-alt" id="about" aria-labelledby="geo-about-heading">
         <div class="geo-wrap geo-wrap-narrow">
             <div class="geo-section-heading"><span class="geo-section-badge">에이정 소개</span><h2 id="geo-about-heading">에이정은 이런 회사입니다</h2></div>
