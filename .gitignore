@@ -30,3 +30,6 @@ public/images/cache/
 # OS
 .DS_Store
 Thumbs.db
+
+# Local WordPress runtime, database and upload packages
+_local/
