@@ -13,9 +13,10 @@ import zipfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-VERSION = '1.7.2'
+VERSION = '1.7.3'
 DESCRIPTION = 'GEO, 브랜드가 AI에 보이도록'
-TITLE = '에이정 | GEO, 브랜드가 AI에 보이도록'
+TITLE = '에이정 | AI가 선택하는 브랜드, GEO·AEO 마케팅'
+META_DESCRIPTION = '에이정은 GEO·AEO 기반 AI 검색 마케팅, 브랜드 콘텐츠 개선, 웹사이트 리뉴얼을 통해 AI 검색에서 브랜드가 정확하게 소개되도록 돕습니다'
 
 
 def replace_once(text, old, new):
@@ -82,6 +83,9 @@ def build(base, output):
     seo = (theme / 'inc/seo.php').read_text()
     seo = replace_once(seo, "'에이정, AX파트너 — AI 교육·컨설팅·자동화'", "'" + TITLE + "'")
     seo = replace_once(seo, "' – 에이정, AX파트너'", "' – 에이정'")
+    seo = replace_once(seo,
+                       "if (is_front_page()) {\n        $description = $site['description'];",
+                       "if (is_front_page()) {\n        $description = '" + META_DESCRIPTION + "';")
     (theme / 'inc/seo.php').write_text(seo)
 
     style = (theme / 'style.css').read_text()

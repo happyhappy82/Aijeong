@@ -1,6 +1,8 @@
 # 에이정 GEO 홈페이지 — WordPress 테마 패키지
 
-사용자 지정 메인 카피: **GEO, 브랜드가 AI에 보이도록**
+사용자 확정 페이지 제목: **에이정 | AI가 선택하는 브랜드, GEO·AEO 마케팅**
+
+메인 화면 카피: **GEO, 브랜드가 AI에 보이도록**
 
 기존 `aijeong-theme` 클래식 테마의 디자인에 맞춰 GEO 홈페이지를 반영합니다. 웹사이트 리뉴얼은 서비스 중 하나로 배치합니다. 기존 공통 헤더·푸터·CSS·배경 사진·폰트·메뉴와 테마 전환 동작을 그대로 사용합니다. 콘텐츠 정본은 `wordpress/front-page.php`이며 초기 정적 HTML 시안은 이전 작업 이력입니다.
 
@@ -12,7 +14,7 @@ python3 wordpress/build-theme.py \
 생성 결과:
 
 - `_local/package/aijeong-theme/`: 업로드 패키지의 실제 테마 소스
-- `_local/package/aijeong-theme-v1.7.2-geo-20261030.zip`: WordPress 테마 업로드용 ZIP
+- `_local/package/aijeong-theme-v1.7.3-geo-20261030.zip`: WordPress 테마 업로드용 ZIP
 - `_local/package/build-report.json`: 변경 파일과 PHP 검사 결과
 
 ZIP의 최상위 폴더는 기존과 같은 `aijeong-theme`입니다. 관리자에서 외모 → 테마 → 새 테마 추가 → 테마 업로드로 올리고 기존 테마 교체를 선택하는 방식입니다. 운영 업로드는 별도 사용자 지시에 따라 수행합니다.
@@ -38,6 +40,16 @@ php -S 127.0.0.1:18266 -t _local/wp _local/wp/router.php
 ```
 
 접속: http://127.0.0.1:18266/
+
+## 1.7.3 — 확정 제목과 메타디스크립션
+
+페이지 제목: **에이정 | AI가 선택하는 브랜드, GEO·AEO 마케팅**
+
+메타디스크립션:
+
+> 에이정은 GEO·AEO 기반 AI 검색 마케팅, 브랜드 콘텐츠 개선, 웹사이트 리뉴얼을 통해 AI 검색에서 브랜드가 정확하게 소개되도록 돕습니다
+
+메인 페이지의 title, og:title, twitter:title과 description, og:description, twitter:description에 각각 동일하게 적용합니다. 하위 페이지의 개별 제목·설명, 메인 화면 카피와 푸터의 짧은 소개는 유지합니다. 운영 반영 전 로컬 테마·ZIP 변경입니다.
 
 ## 1.7.2 — 교육 사진을 깔끔한 배경으로 교체
 
