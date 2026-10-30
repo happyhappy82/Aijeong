@@ -6,7 +6,7 @@ $site = aijeong_get_site_config();
 ?>
 <div class="geo-home">
     <section class="geo-hero relative min-h-screen flex items-center -mt-16 md:-mt-20 overflow-hidden bg-black" aria-labelledby="geo-hero-heading">
-        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60" style="background-image:url('<?php echo esc_url($theme_uri); ?>/assets/images/hero-bg.jpg')"></div>
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60" style="background-image:url('<?php echo esc_url($theme_uri); ?>/assets/images/geo-hero-background.png')"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
         <div class="geo-wrap geo-hero-inner relative z-10">
             <div class="max-w-2xl pt-20">

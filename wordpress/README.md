@@ -12,7 +12,7 @@ python3 wordpress/build-theme.py \
 생성 결과:
 
 - `_local/package/aijeong-theme/`: 업로드 패키지의 실제 테마 소스
-- `_local/package/aijeong-theme-v1.7.1-geo-20261030.zip`: WordPress 테마 업로드용 ZIP
+- `_local/package/aijeong-theme-v1.7.2-geo-20261030.zip`: WordPress 테마 업로드용 ZIP
 - `_local/package/build-report.json`: 변경 파일과 PHP 검사 결과
 
 ZIP의 최상위 폴더는 기존과 같은 `aijeong-theme`입니다. 관리자에서 외모 → 테마 → 새 테마 추가 → 테마 업로드로 올리고 기존 테마 교체를 선택하는 방식입니다. 운영 업로드는 별도 사용자 지시에 따라 수행합니다.
@@ -38,6 +38,12 @@ php -S 127.0.0.1:18266 -t _local/wp _local/wp/router.php
 ```
 
 접속: http://127.0.0.1:18266/
+
+## 1.7.2 — 교육 사진을 깔끔한 배경으로 교체
+
+교육 현장 사진 대신 인물 없는 차콜·네이비 계열 배경을 사용합니다. 기존 헤더·푸터·공통 CSS·버튼과 GEO 카피, 서비스 구성은 유지합니다. 이미지 정본은 `wordpress/assets/geo-hero-background.png`이고, 생성 방식과 전체 프롬프트는 `wordpress/assets/README.md`에 기록했습니다. 빌드 시 테마의 `assets/images/geo-hero-background.png`에 포함합니다.
+
+상품명은 별도 추천 단계입니다. 현재 서비스명 ‘GEO’를 임의로 바꾸지 않았습니다. 작업공간 루트 `AIJEONG_SERVICE_PRODUCT_PLAN_20261030.md`에 ‘AI 검색 브랜드 관리’를 대표 상품으로 하는 진단·초기 정비·월간 관리와 별도 웹사이트 리뉴얼을 제안했습니다.
 
 2026-10-30 기존 디자인 적용본 1.7.1 확인 결과:
 

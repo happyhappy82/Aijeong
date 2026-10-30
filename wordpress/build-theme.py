@@ -13,7 +13,7 @@ import zipfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-VERSION = '1.7.1'
+VERSION = '1.7.2'
 DESCRIPTION = 'GEO, 브랜드가 AI에 보이도록'
 TITLE = '에이정 | GEO, 브랜드가 AI에 보이도록'
 
@@ -91,6 +91,7 @@ def build(base, output):
 
     shutil.copyfile(REPO / 'wordpress/geo-home.css', theme / 'assets/css/geo-home.css')
     shutil.copyfile(REPO / 'wordpress/geo-home.js', theme / 'assets/js/geo-home.js')
+    shutil.copyfile(REPO / 'wordpress/assets/geo-hero-background.png', theme / 'assets/images/geo-hero-background.png')
 
     # Fail before packaging if any PHP template is syntactically invalid.
     php_files = sorted(theme.rglob('*.php'))
