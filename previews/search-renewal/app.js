@@ -28,7 +28,7 @@ form.addEventListener('submit', event => {
   const message = data.get('message').trim();
   if (!company || !message) {
     const status = document.querySelector('#form-status');
-    status.textContent = '회사·브랜드명과 문의 내용을 입력해 주세요.';
+    status.textContent = '회사·브랜드명과 문의 내용을 입력해 주세요';
     status.hidden = false;
     (!company ? document.querySelector('#company') : document.querySelector('#message')).focus();
     return;
@@ -40,7 +40,7 @@ form.addEventListener('submit', event => {
   fallback.href = mailto;
   fallback.hidden = false;
   const status = document.querySelector('#form-status');
-  status.textContent = '이메일 초안을 준비했습니다. 이메일 앱에서 내용을 확인하고 보내주세요. 앱이 열리지 않으면 아래 링크를 이용해 주세요.';
+  status.textContent = '이메일 앱에서 내용을 확인한 뒤 보내주세요';
   status.hidden = false;
   window.location.href = mailto;
 });
