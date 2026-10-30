@@ -1,5 +1,7 @@
 # 에이정 AI 검색·웹사이트 리뉴얼 로컬 시안
 
+**최신 디자인 정본은 `wordpress/front-page.php`, `wordpress/geo-home.css`, `wordpress/geo-home.js`입니다.** 기존 에이정 테마의 헤더·푸터·CSS와 전체 화면 사진 히어로를 사용하는 테마 1.7.1로 변경했습니다. 이 디렉토리의 HTML/CSS는 초기 별도 디자인 시안 이력으로만 남깁니다. 아래의 HTML 반영·수정 절차는 이전 버전 설명입니다. 현재 로컬 http://127.0.0.1:18266/ 은 최신 WordPress 테마를 보여줍니다.
+
 최신 상태: 메인 카피는 **GEO, 브랜드가 AI에 보이도록**이며 웹사이트 리뉴얼은 서비스 2번입니다. 현재 `http://127.0.0.1:18266/`은 이 HTML을 반영한 실제 WordPress 테마로 실행합니다. 아래 정적 서버 명령은 HTML 단독 확인용입니다.
 
 업로드용 WordPress 테마 ZIP 제작 방법과 소스는 [`../../wordpress/README.md`](../../wordpress/README.md)를 참고하세요. 로컬 WordPress는 저장소 루트에서 다음 명령으로 실행합니다.

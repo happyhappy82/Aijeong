@@ -13,7 +13,7 @@ import zipfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-VERSION = '1.7.0'
+VERSION = '1.7.1'
 DESCRIPTION = 'GEO, 브랜드가 AI에 보이도록'
 TITLE = '에이정 | GEO, 브랜드가 AI에 보이도록'
 
@@ -40,35 +40,9 @@ def build(base, output):
         'node_modules', 'aijeong-theme', '_preview', '.git', '.DS_Store',
         '*.zip', '.env', '.env.*', '*.log', '*.bak', '__pycache__'))
 
-    source = (REPO / 'previews/search-renewal/index.html').read_text()
-    header_html = source.split('<body>', 1)[1].split('  <main id="main">', 1)[0]
-    main_html = '<main id="main">' + source.split('  <main id="main">', 1)[1].split('  </main>', 1)[0] + '</main>\n'
-    footer_html = '<footer' + source.split('  <footer', 1)[1].split('</footer>', 1)[0] + '</footer>\n'
-
-    def adapt_markup(html):
-        html = html.replace('src="assets/logo-original.svg"',
-                            'src="<?php echo esc_url($theme_uri); ?>/assets/images/logo/logo-original.svg"')
-        html = html.replace('href="https://aijeong.com/ai-education/"',
-                            'href="<?php echo esc_url(home_url(\'/ai-education/\')); ?>"')
-        html = html.replace('href="#"', 'href="<?php echo esc_url(home_url(\'/\')); ?>"')
-        return html
-
-    # Retain the original head hooks, tracking setup and footer integrations.
-    # Their values are read from the unchanged local base theme at package time.
-    header_prefix = (base / 'header.php').read_text().split('    <!-- Header -->', 1)[0]
-    header_prefix = re.sub(r'    <!-- Dark mode FOUC prevention.*?</script>\s*', '',
-                           header_prefix, count=1, flags=re.S)
-    header_prefix = replace_once(header_prefix, '<body class="font-sans antialiased">',
-                                '<body <?php body_class(\'aijeong-geo-home\'); ?>>\n    <?php wp_body_open(); ?>')
-    (theme / 'header-geo.php').write_text(header_prefix + adapt_markup(header_html))
-
-    footer_tail = (base / 'footer.php').read_text().split('    <!-- Channel IO (bfcache compatible) -->', 1)[1]
-    footer_setup = "<?php\n$site = aijeong_get_site_config();\n$tracking = aijeong_get_tracking_config();\n$theme_uri = get_template_directory_uri();\n?>\n"
-    (theme / 'footer-geo.php').write_text(footer_setup + adapt_markup(footer_html) +
-                                       '\n    <!-- Channel IO (bfcache compatible) -->' + footer_tail)
-    (theme / 'front-page.php').write_text(
-        "<?php\n/** GEO front page. */\nget_header('geo');\n$theme_uri = get_template_directory_uri();\n?>\n" +
-        adapt_markup(main_html) + "<?php get_footer('geo'); ?>\n")
+    # Reuse the original header, footer, compiled CSS and common behavior.
+    # The GEO front page is now a native PHP template, not the early HTML sketch.
+    shutil.copyfile(REPO / 'wordpress/front-page.php', theme / 'front-page.php')
 
     shutil.copyfile(REPO / 'wordpress/geo-home.php', theme / 'inc/geo-home.php')
     functions = (theme / 'functions.php').read_text()
@@ -115,10 +89,8 @@ def build(base, output):
     style = re.sub(r'^Description:.*$', 'Description: 에이정 - ' + DESCRIPTION, style, count=1, flags=re.M)
     (theme / 'style.css').write_text(style)
 
-    css = (REPO / 'previews/search-renewal/styles.css').read_text()
-    css = css.replace("url('assets/PretendardVariable.woff2')", "url('../fonts/PretendardVariable.woff2')")
-    (theme / 'assets/css/geo-home.css').write_text(css)
-    shutil.copyfile(REPO / 'previews/search-renewal/app.js', theme / 'assets/js/geo-home.js')
+    shutil.copyfile(REPO / 'wordpress/geo-home.css', theme / 'assets/css/geo-home.css')
+    shutil.copyfile(REPO / 'wordpress/geo-home.js', theme / 'assets/js/geo-home.js')
 
     # Fail before packaging if any PHP template is syntactically invalid.
     php_files = sorted(theme.rglob('*.php'))
