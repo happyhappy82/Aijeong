@@ -11,7 +11,7 @@ $site = aijeong_get_site_config();
         <div class="geo-wrap geo-hero-inner relative z-10">
             <div class="max-w-2xl pt-20">
                 <span class="hero-badge inline-block px-4 py-1.5 rounded-full border border-accent/30 text-sm font-medium text-accent mb-6">AI 검색 최적화 · GEO</span>
-                <h1 id="geo-hero-heading" class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white">GEO,<br>브랜드가 AI에<br>보이도록</h1>
+                <h1 id="geo-hero-heading" class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white">AI 검색에 맞춰<br>브랜드를 다시 설계합니다</h1>
                 <p class="hero-subtitle mt-5 text-lg md:text-xl font-bold text-white">브랜드를 찾는 고객의 질문부터 확인합니다</p>
                 <p class="hero-description mt-3 text-base md:text-lg text-gray-300 leading-relaxed">AI 검색에서 우리 브랜드가 어떻게 소개되는지 살펴보고<br class="geo-desktop-break">브랜드 정보와 콘텐츠를 정리합니다</p>
                 <div class="hero-cta geo-hero-actions mt-8">
