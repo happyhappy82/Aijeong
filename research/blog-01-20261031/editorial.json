@@ -1,0 +1,43 @@
+{
+  "site_key": "aj",
+  "prompt_key": "aj_default + latest user instructions",
+  "status": "OriginalDraft / local review only",
+  "topic_number": 1,
+  "primary_keyword": "GEO SEO 차이",
+  "title": "GEO SEO 차이, 우리 브랜드는 무엇부터 준비해야 할까?",
+  "meta_description": "SEO와 GEO, 우리 브랜드는 무엇부터 준비해야 할까요? 홈페이지 상태별 우선 작업부터 리뉴얼 필요 여부와 외주 범위까지, 도입을 검토하는 대표·담당자의 판단 기준을 살펴보세요.",
+  "article_file": "AIJEONG_BLOG_01_GEO_SEO_DRAFT_20261031.md",
+  "audience": "서비스 이용을 검토하는 대표·마케팅·웹 담당자",
+  "decision": "SEO 기반·브랜드 정보/콘텐츠·홈페이지 구조 중 먼저 맡길 작업과 범위",
+  "internal_link_plan": [
+    {
+      "anchor": "브랜드 AI검색 노출",
+      "path": "/geo/",
+      "placement": "마지막 H2 서비스명"
+    },
+    {
+      "anchor": "웹사이트 리뉴얼",
+      "path": "/website-renewal/",
+      "placement": "리뉴얼 판단 섹션"
+    },
+    {
+      "anchor": "문의하기",
+      "path": "/?service=geo#contact",
+      "placement": "마지막 CTA"
+    }
+  ],
+  "link_status": "로컬 서비스 기획의 경로이며 운영 미업로드. 공개 대상 URL을 확인한 뒤 본문에 연결한다.",
+  "wordpress_note": "제목 필드가 H1을 출력하면 본문은 첫 H1을 제외하고 첫 문단부터 넣는다. SEO title은 확정 제목과 동일하게 설정한다.",
+  "scope_note": "사용자가 승인한 공식 홈페이지 1번 초안만 작성. Premium/백링크/Notion 저장/발행/테마 변경 없음.",
+  "length_assumption": "사용자가 승인한 짧은 제목 유지. 기존 90~100자는 이번 메타 설명에 적용. 메인키워드 반복은 정확한 구문 기준으로 절제한다.",
+  "checks": {
+    "h1_count": 1,
+    "h2_count": 5,
+    "h3_count": 6,
+    "article_primary_keyword_count": 1,
+    "meta_description_characters": 100,
+    "visible_markdown_characters": 4433,
+    "title_h1_equal": true,
+    "external_source_links": 6
+  }
+}

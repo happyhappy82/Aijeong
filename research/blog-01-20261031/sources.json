@@ -1,0 +1,48 @@
+[
+  {
+    "title": "Google SEO 기본 가이드",
+    "url": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=ko",
+    "supports": "SEO의 목적, 제목·내부 링크·사이트 구성, Search Console URL 검사",
+    "type": "검색 플랫폼 공식 안내",
+    "checked_on": "2026-10-31"
+  },
+  {
+    "title": "GEO: Generative Engine Optimization",
+    "url": "https://arxiv.org/abs/2311.09735",
+    "supports": "생성형 검색 답변의 콘텐츠 가시성 최적화라는 GEO의 연구상 개념",
+    "type": "연구 원문",
+    "limit": "벤치마크의 향상 수치를 자사·일반 서비스 성과로 사용하지 않음",
+    "checked_on": "2026-10-31"
+  },
+  {
+    "title": "Google AI 기능과 웹사이트",
+    "url": "https://developers.google.com/search/docs/appearance/ai-features?hl=ko",
+    "supports": "AI Overviews/AI Mode에서 기존 SEO 원칙 적용; 색인/스니펫 자격; 별도 AI 파일·특별한 schema 불필요",
+    "type": "검색 플랫폼 공식 안내",
+    "limit": "Google 해당 기능의 요건이며 모든 AI 플랫폼에 일반화하지 않음",
+    "checked_on": "2026-10-31"
+  },
+  {
+    "title": "Bing Keeping Content Discoverable with Sitemaps in AI Powered Search",
+    "url": "https://blogs.bing.com/webmaster/2025/7/Keeping-Content-Discoverable-with-Sitemaps-in-AI-Powered-Search/",
+    "supports": "AI 검색에서도 수집·색인·최신 정보 유지의 중요성",
+    "type": "독립 검색 플랫폼 공식 안내",
+    "published_on": "2025-07-31",
+    "checked_on": "2026-10-31"
+  },
+  {
+    "title": "Google URL 변경을 수반하는 사이트 이전",
+    "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes?hl=ko",
+    "supports": "사이트 URL 변경 시 기존/신규 URL 매핑과 리디렉션 준비",
+    "type": "검색 플랫폼 공식 안내",
+    "checked_on": "2026-10-31"
+  },
+  {
+    "title": "Google 유용하고 신뢰할 수 있는 사용자 중심 콘텐츠",
+    "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=ko",
+    "supports": "실제 독자의 문제를 충분히 답하는 방향, 출처·고유 가치·과장 없는 제목 검토",
+    "type": "검색 플랫폼 공식 안내",
+    "usage": "편집 기준. 직접적인 AI 인용 성과 근거로 사용하지 않음",
+    "checked_on": "2026-10-31"
+  }
+]

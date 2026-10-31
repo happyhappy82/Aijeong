@@ -10,7 +10,10 @@
     "status": "제목 확정",
     "autocomplete_exact": "geo seo 차이",
     "source_url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=ko&gl=kr&q=GEO+SEO",
-    "checked_at": "2026-10-31T12:51:36+09:00"
+    "checked_at": "2026-10-31T12:51:36+09:00",
+    "draft_status": "OriginalDraft v1 / 로컬 검토용·미발행",
+    "draft_file": "AIJEONG_BLOG_01_GEO_SEO_DRAFT_20261031.md",
+    "editorial_file": "AIJEONG_BLOG_01_REVIEW_20261031.md"
   },
   {
     "group": "서비스 검토",
