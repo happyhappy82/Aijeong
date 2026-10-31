@@ -1,0 +1,218 @@
+[
+  {
+    "query": "GEO",
+    "url": "https://aijeong.com/wp-json/wp/v2/posts?search=GEO&per_page=100&_fields=id%2Ctitle%2Clink",
+    "posts": [
+      {
+        "id": 1502,
+        "title": "AI로 치과 홈페이지를 만들 수 있을까? 실제 제작 사례",
+        "url": "https://aijeong.com/ai%eb%a1%9c-%ec%b9%98%ea%b3%bc-%ed%99%88%ed%8e%98%ec%9d%b4%ec%a7%80%eb%a5%bc-%eb%a7%8c%eb%93%a4-%ec%88%98-%ec%9e%88%ec%9d%84%ea%b9%8c-%ec%8b%a4%ec%a0%9c-%ec%a0%9c%ec%9e%91-%ec%82%ac%eb%a1%80/"
+      },
+      {
+        "id": 824,
+        "title": "나노바나나 API 비용 및 가격 총정리",
+        "url": "https://aijeong.com/%eb%82%98%eb%85%b8%eb%b0%94%eb%82%98%eb%82%98-api-%eb%b9%84%ec%9a%a9-%eb%b0%8f-%ea%b0%80%ea%b2%a9-%ec%b4%9d%ec%a0%95%eb%a6%ac-2/"
+      },
+      {
+        "id": 800,
+        "title": "커서ai 설치 및 다운로드 방법",
+        "url": "https://aijeong.com/%ec%bb%a4%ec%84%9cai-%ec%84%a4%ec%b9%98-%eb%b0%8f-%eb%8b%a4%ec%9a%b4%eb%a1%9c%eb%93%9c-%eb%b0%a9%eb%b2%95/"
+      }
+    ]
+  },
+  {
+    "query": "AEO",
+    "url": "https://aijeong.com/wp-json/wp/v2/posts?search=AEO&per_page=100&_fields=id%2Ctitle%2Clink",
+    "posts": [
+      {
+        "id": 824,
+        "title": "나노바나나 API 비용 및 가격 총정리",
+        "url": "https://aijeong.com/%eb%82%98%eb%85%b8%eb%b0%94%eb%82%98%eb%82%98-api-%eb%b9%84%ec%9a%a9-%eb%b0%8f-%ea%b0%80%ea%b2%a9-%ec%b4%9d%ec%a0%95%eb%a6%ac-2/"
+      },
+      {
+        "id": 800,
+        "title": "커서ai 설치 및 다운로드 방법",
+        "url": "https://aijeong.com/%ec%bb%a4%ec%84%9cai-%ec%84%a4%ec%b9%98-%eb%b0%8f-%eb%8b%a4%ec%9a%b4%eb%a1%9c%eb%93%9c-%eb%b0%a9%eb%b2%95/"
+      }
+    ]
+  },
+  {
+    "query": "SEO",
+    "url": "https://aijeong.com/wp-json/wp/v2/posts?search=SEO&per_page=100&_fields=id%2Ctitle%2Clink",
+    "posts": [
+      {
+        "id": 1507,
+        "title": "AI로 소방설비업체 홈페이지를 만들 수 있을까? 실제 제작 사례",
+        "url": "https://aijeong.com/ai%eb%a1%9c-%ec%86%8c%eb%b0%a9%ec%84%a4%eb%b9%84%ec%97%85%ec%b2%b4-%ed%99%88%ed%8e%98%ec%9d%b4%ec%a7%80%eb%a5%bc-%eb%a7%8c%eb%93%a4-%ec%88%98-%ec%9e%88%ec%9d%84%ea%b9%8c-%ec%8b%a4%ec%a0%9c-%ec%a0%9c/"
+      },
+      {
+        "id": 1339,
+        "title": "클로드코드 가입 및 인증 가이드 2026 (7가지 오류 해결방법)",
+        "url": "https://aijeong.com/claude-code-signup-2026-guide/"
+      },
+      {
+        "id": 1178,
+        "title": "2026 클로드 글쓰기 프롬프트 7가지(복사해서 바로 쓰세요.)",
+        "url": "https://aijeong.com/2026-%ed%81%b4%eb%a1%9c%eb%93%9c-%ea%b8%80%ec%93%b0%ea%b8%b0-%ed%94%84%eb%a1%ac%ed%94%84%ed%8a%b8-7%ea%b0%80%ec%a7%80%eb%b3%b5%ec%82%ac%ed%95%b4%ec%84%9c-%eb%b0%94%eb%a1%9c-%ec%93%b0%ec%84%b8%ec%9a%94/"
+      },
+      {
+        "id": 800,
+        "title": "커서ai 설치 및 다운로드 방법",
+        "url": "https://aijeong.com/%ec%bb%a4%ec%84%9cai-%ec%84%a4%ec%b9%98-%eb%b0%8f-%eb%8b%a4%ec%9a%b4%eb%a1%9c%eb%93%9c-%eb%b0%a9%eb%b2%95/"
+      }
+    ]
+  },
+  {
+    "query": "리뉴얼",
+    "url": "https://aijeong.com/wp-json/wp/v2/posts?search=%EB%A6%AC%EB%89%B4%EC%96%BC&per_page=100&_fields=id%2Ctitle%2Clink",
+    "posts": [
+      {
+        "id": 1524,
+        "title": "AI로 에어컨 설치업체 홈페이지를 만들 수 있을까? 실제 제작 사례",
+        "url": "https://aijeong.com/ai%eb%a1%9c-%ec%97%90%ec%96%b4%ec%bb%a8-%ec%84%a4%ec%b9%98%ec%97%85%ec%b2%b4-%ed%99%88%ed%8e%98%ec%9d%b4%ec%a7%80%eb%a5%bc-%eb%a7%8c%eb%93%a4-%ec%88%98-%ec%9e%88%ec%9d%84%ea%b9%8c-%ec%8b%a4%ec%a0%9c/"
+      },
+      {
+        "id": 1493,
+        "title": "AI로 전기공사 회사 홈페이지를 만들 수 있을까? 실제 제작 사례",
+        "url": "https://aijeong.com/ai%eb%a1%9c-%ec%a0%84%ea%b8%b0%ea%b3%b5%ec%82%ac-%ed%9a%8c%ec%82%ac-%ed%99%88%ed%8e%98%ec%9d%b4%ec%a7%80%eb%a5%bc-%eb%a7%8c%eb%93%a4-%ec%88%98-%ec%9e%88%ec%9d%84%ea%b9%8c-%ec%8b%a4%ec%a0%9c-%ec%a0%9c/"
+      }
+    ]
+  },
+  {
+    "query": "반응형",
+    "url": "https://aijeong.com/wp-json/wp/v2/posts?search=%EB%B0%98%EC%9D%91%ED%98%95&per_page=100&_fields=id%2Ctitle%2Clink",
+    "posts": [
+      {
+        "id": 1544,
+        "title": "AI로 CCTV 설치업체 홈페이지를 만들 수 있을까? 실제 제작 사례",
+        "url": "https://aijeong.com/ai%eb%a1%9c-cctv-%ec%84%a4%ec%b9%98%ec%97%85%ec%b2%b4-%ed%99%88%ed%8e%98%ec%9d%b4%ec%a7%80%eb%a5%bc-%eb%a7%8c%eb%93%a4-%ec%88%98-%ec%9e%88%ec%9d%84%ea%b9%8c-%ec%8b%a4%ec%a0%9c-%ec%a0%9c%ec%9e%91/"
+      },
+      {
+        "id": 1507,
+        "title": "AI로 소방설비업체 홈페이지를 만들 수 있을까? 실제 제작 사례",
+        "url": "https://aijeong.com/ai%eb%a1%9c-%ec%86%8c%eb%b0%a9%ec%84%a4%eb%b9%84%ec%97%85%ec%b2%b4-%ed%99%88%ed%8e%98%ec%9d%b4%ec%a7%80%eb%a5%bc-%eb%a7%8c%eb%93%a4-%ec%88%98-%ec%9e%88%ec%9d%84%ea%b9%8c-%ec%8b%a4%ec%a0%9c-%ec%a0%9c/"
+      },
+      {
+        "id": 1502,
+        "title": "AI로 치과 홈페이지를 만들 수 있을까? 실제 제작 사례",
+        "url": "https://aijeong.com/ai%eb%a1%9c-%ec%b9%98%ea%b3%bc-%ed%99%88%ed%8e%98%ec%9d%b4%ec%a7%80%eb%a5%bc-%eb%a7%8c%eb%93%a4-%ec%88%98-%ec%9e%88%ec%9d%84%ea%b9%8c-%ec%8b%a4%ec%a0%9c-%ec%a0%9c%ec%9e%91-%ec%82%ac%eb%a1%80/"
+      },
+      {
+        "id": 1493,
+        "title": "AI로 전기공사 회사 홈페이지를 만들 수 있을까? 실제 제작 사례",
+        "url": "https://aijeong.com/ai%eb%a1%9c-%ec%a0%84%ea%b8%b0%ea%b3%b5%ec%82%ac-%ed%9a%8c%ec%82%ac-%ed%99%88%ed%8e%98%ec%9d%b4%ec%a7%80%eb%a5%bc-%eb%a7%8c%eb%93%a4-%ec%88%98-%ec%9e%88%ec%9d%84%ea%b9%8c-%ec%8b%a4%ec%a0%9c-%ec%a0%9c/"
+      },
+      {
+        "id": 1467,
+        "title": "Anthropic Academy 클로드코드 강좌 수강 방법 입문 가이드 (2026)",
+        "url": "https://aijeong.com/anthropic-academy-%ed%81%b4%eb%a1%9c%eb%93%9c%ec%bd%94%eb%93%9c-%ea%b0%95%ec%a2%8c-%ec%88%98%ea%b0%95-%eb%b0%a9%eb%b2%95-%ec%99%84%ec%a0%84-%ea%b0%80%ec%9d%b4%eb%93%9c-2026/"
+      }
+    ]
+  },
+  {
+    "query": "기업 AI 교육",
+    "url": "https://aijeong.com/wp-json/wp/v2/posts?search=%EA%B8%B0%EC%97%85+AI+%EA%B5%90%EC%9C%A1&per_page=100&_fields=id%2Ctitle%2Clink",
+    "posts": [
+      {
+        "id": 1626,
+        "title": "ElevenLabs 법인카드 결제방법 요금제부터 경비처리까지 총정리",
+        "url": "https://aijeong.com/elevenlabs-%eb%b2%95%ec%9d%b8%ec%b9%b4%eb%93%9c-%ea%b2%b0%ec%a0%9c%eb%b0%a9%eb%b2%95-%ec%9a%94%ea%b8%88%ec%a0%9c%eb%b6%80%ed%84%b0-%ea%b2%bd%eb%b9%84%ec%b2%98%eb%a6%ac%ea%b9%8c%ec%a7%80-%ed%95%9c/"
+      },
+      {
+        "id": 1620,
+        "title": "런웨이(Runway) 법인카드 결제방법 요금제부터 경비처리까지 한번에 정리",
+        "url": "https://aijeong.com/%eb%9f%b0%ec%9b%a8%ec%9d%b4-runway-%eb%b2%95%ec%9d%b8%ec%b9%b4%eb%93%9c-%ea%b2%b0%ec%a0%9c%eb%b0%a9%eb%b2%95/"
+      },
+      {
+        "id": 1618,
+        "title": "AI 서비스 법인카드 경비처리 방법 총정리",
+        "url": "https://aijeong.com/ai-%ec%84%9c%eb%b9%84%ec%8a%a4-%eb%b2%95%ec%9d%b8%ec%b9%b4%eb%93%9c-%ea%b2%bd%eb%b9%84%ec%b2%98%eb%a6%ac-%eb%b0%a9%eb%b2%95-%ec%b4%9d%ec%a0%95%eb%a6%ac/"
+      },
+      {
+        "id": 1563,
+        "title": "젠스파크 세금계산서 발급방법 총정리 (Genspark 부가세 처리까지)",
+        "url": "https://aijeong.com/%ec%a0%a0%ec%8a%a4%ed%8c%8c%ed%81%ac-%ec%84%b8%ea%b8%88%ea%b3%84%ec%82%b0%ec%84%9c-%eb%b0%9c%ea%b8%89%eb%b0%a9%eb%b2%95-%ec%b4%9d%ec%a0%95%eb%a6%ac/"
+      },
+      {
+        "id": 1446,
+        "title": "퍼플렉시티 딥리서치 업무 활용법 5가지 (2026 실전 가이드)",
+        "url": "https://aijeong.com/%ed%8d%bc%ed%94%8c%eb%a0%89%ec%8b%9c%ed%8b%b0-%eb%94%a5%eb%a6%ac%ec%84%9c%ec%b9%98-%ec%97%85%eb%ac%b4-%ed%99%9c%ec%9a%a9%eb%b2%95-5%ea%b0%80%ec%a7%80-2026-%ec%8b%a4%ec%a0%84-%ea%b0%80%ec%9d%b4/"
+      },
+      {
+        "id": 1440,
+        "title": "정부 지원 AI 교육 과정, 기업이 활용하는 법",
+        "url": "https://aijeong.com/%ec%a0%95%eb%b6%80-%ec%a7%80%ec%9b%90-ai-%ea%b5%90%ec%9c%a1-%ea%b3%bc%ec%a0%95-%ea%b8%b0%ec%97%85%ec%9d%b4-%ed%99%9c%ec%9a%a9%ed%95%98%eb%8a%94-%eb%b2%95/"
+      },
+      {
+        "id": 1438,
+        "title": "회사 임직원 AI 리터러시 수준 진단 방법은?",
+        "url": "https://aijeong.com/%ec%9e%84%ec%a7%81%ec%9b%90-ai-%eb%a6%ac%ed%84%b0%eb%9f%ac%ec%8b%9c-%ec%88%98%ec%a4%80-%ec%9a%b0%eb%a6%ac-%ed%9a%8c%ec%82%ac%eb%8a%94-%ec%96%b4%eb%94%94%ec%8a%a4%ec%9d%bc%ea%b9%8c/"
+      },
+      {
+        "id": 1436,
+        "title": "AI교육 안 하면 생기는일, 담당자가 알아야 할 3가지",
+        "url": "https://aijeong.com/ai%ea%b5%90%ec%9c%a1-%ec%95%88-%ed%95%98%eb%a9%b4-%ec%83%9d%ea%b8%b0%eb%8a%94%ec%9d%bc-%eb%8b%b4%eb%8b%b9%ec%9e%90%ea%b0%80-%ec%95%8c%ec%95%84%ec%95%bc-%ed%95%a0-3%ea%b0%80%ec%a7%80/"
+      },
+      {
+        "id": 1434,
+        "title": "2026 기업 AI 교육 트렌드, 이것이 50%나 차지한 이유는?",
+        "url": "https://aijeong.com/2026-%ea%b8%b0%ec%97%85%ea%b5%90%ec%9c%a1-%ed%8a%b8%eb%a0%8c%eb%93%9c-ai-%ea%b5%90%ec%9c%a1%ec%9d%b4-%ec%a0%88%eb%b0%98%ec%9d%84-%ec%b0%a8%ec%a7%80%ed%95%9c-%ec%9d%b4%ec%9c%a0/"
+      },
+      {
+        "id": 1430,
+        "title": "AI 교육 후 실무 적용률 높이는 검증된 방법은?",
+        "url": "https://aijeong.com/ai-%ea%b5%90%ec%9c%a1-%ed%9b%84-%ec%8b%a4%eb%ac%b4-%ec%a0%81%ec%9a%a9%eb%a5%a0-%eb%86%92%ec%9d%b4%eb%8a%94-%eb%b2%95-%ec%88%ab%ec%9e%90%eb%a1%9c-%ea%b2%80%ec%a6%9d%eb%90%9c-%eb%b0%a9%eb%b2%95%eb%93%a4/"
+      },
+      {
+        "id": 1429,
+        "title": "사내 AI 교육 vs 외부 위탁, 어떤 방식이 우리 조직에 맞을까",
+        "url": "https://aijeong.com/%ec%82%ac%eb%82%b4-ai-%ea%b5%90%ec%9c%a1-vs-%ec%99%b8%eb%b6%80-%ec%9c%84%ed%83%81-%ec%96%b4%eb%96%a4-%eb%b0%a9%ec%8b%9d%ec%9d%b4-%ec%9a%b0%eb%a6%ac-%ec%a1%b0%ec%a7%81%ec%97%90-%eb%a7%9e%ec%9d%84/"
+      },
+      {
+        "id": 1425,
+        "title": "AI 교육업체 선정 기준 체크리스트, 담당자가 꼭 확인할 6가지",
+        "url": "https://aijeong.com/ai-%ea%b5%90%ec%9c%a1%ec%97%85%ec%b2%b4-%ec%84%a0%ec%a0%95-%ea%b8%b0%ec%a4%80-%ec%b2%b4%ed%81%ac%eb%a6%ac%ec%8a%a4%ed%8a%b8-%eb%8b%b4%eb%8b%b9%ec%9e%90%ea%b0%80-%ea%bc%ad-%ed%99%95%ec%9d%b8%ed%95%a0-7/"
+      },
+      {
+        "id": 1594,
+        "title": "AI 활용 교육 사례 – 실무형 교육으로 성과 낸 운영 방식은?",
+        "url": "https://aijeong.com/ai-%ed%99%9c%ec%9a%a9-%ea%b5%90%ec%9c%a1-%ec%82%ac%eb%a1%80-%ec%8b%a4%eb%ac%b4%ed%98%95-%ea%b5%90%ec%9c%a1%ec%9c%bc%eb%a1%9c-%ec%84%b1%ea%b3%bc-%eb%82%b8-%ec%9a%b4%ec%98%81-%eb%b0%a9%ec%8b%9d-2/"
+      },
+      {
+        "id": 1423,
+        "title": "AI 활용 교육 사례 – 실무형 교육으로 성과 낸 운영 방식은?",
+        "url": "https://aijeong.com/ai-%ed%99%9c%ec%9a%a9-%ea%b5%90%ec%9c%a1-%ec%82%ac%eb%a1%80-%ec%8b%a4%eb%ac%b4%ed%98%95-%ea%b5%90%ec%9c%a1%ec%9c%bc%eb%a1%9c-%ec%84%b1%ea%b3%bc-%eb%82%b8-%ec%9a%b4%ec%98%81-%eb%b0%a9%ec%8b%9d/"
+      },
+      {
+        "id": 1416,
+        "title": "2026 AI 특강 주제 선정법, 임직원 참여율 높은 주제는 무엇일까?",
+        "url": "https://aijeong.com/ai-%ed%8a%b9%ea%b0%95-%ec%a3%bc%ec%a0%9c-%ec%84%a0%ec%a0%95%eb%b2%95-%ec%9e%84%ec%a7%81%ec%9b%90-%ec%b0%b8%ec%97%ac%ec%9c%a8-%eb%86%92%ec%9d%80-%ec%a3%bc%ec%a0%9c/"
+      },
+      {
+        "id": 1311,
+        "title": "반응이 좋아지는 발표 대본 프롬프트 5가지",
+        "url": "https://aijeong.com/%eb%b0%98%ec%9d%91%ec%9d%b4-%ec%a2%8b%ec%95%84%ec%a7%80%eb%8a%94-%eb%b0%9c%ed%91%9c-%eb%8c%80%eb%b3%b8-%ed%94%84%eb%a1%ac%ed%94%84%ed%8a%b8-5%ea%b0%80%ec%a7%80/"
+      },
+      {
+        "id": 1159,
+        "title": "2026 솔직한 클로드 장점 및 단점 3가지",
+        "url": "https://aijeong.com/2026-%ec%86%94%ec%a7%81%ed%95%9c-%ed%81%b4%eb%a1%9c%eb%93%9c-%ec%9e%a5%ec%a0%90-%eb%b0%8f-%eb%8b%a8%ec%a0%90-3%ea%b0%80%ec%a7%80/"
+      },
+      {
+        "id": 752,
+        "title": "노트북LM 슬라이드 PPT 만들기",
+        "url": "https://aijeong.com/%eb%85%b8%ed%8a%b8%eb%b6%81lm-%ec%8a%ac%eb%9d%bc%ec%9d%b4%eb%93%9c-ppt-%eb%a7%8c%eb%93%a4%ea%b8%b0/"
+      },
+      {
+        "id": 179,
+        "title": "에이정, 현대카드 현대커머셜에서 AI교육하고 왔습니다.",
+        "url": "https://aijeong.com/%ec%97%90%ec%9d%b4%ec%a0%95-%ed%98%84%eb%8c%80%ec%b9%b4%eb%93%9c-%ed%98%84%eb%8c%80%ec%bb%a4%eb%a8%b8%ec%85%9c%ec%97%90%ec%84%9c-ai%ea%b5%90%ec%9c%a1%ed%95%98%ea%b3%a0-%ec%99%94%ec%8a%b5%eb%8b%88/"
+      },
+      {
+        "id": 1,
+        "title": "안녕하세요! 에이정입니다.",
+        "url": "https://aijeong.com/%ec%95%88%eb%85%95%ed%95%98%ec%84%b8%ec%9a%94/"
+      }
+    ]
+  }
+]
