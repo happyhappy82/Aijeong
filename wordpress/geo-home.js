@@ -6,7 +6,7 @@
     });
     if (input) input.checked = true;
   }
-  var services = { geo: 'GEO', 'website-renewal': '웹사이트 리뉴얼', 'ai-education': 'AI교육' };
+  var services = { geo: '브랜드 AI검색 노출', 'website-renewal': '웹사이트 리뉴얼', 'ai-education': 'AI교육' };
   var selectedService = new URLSearchParams(window.location.search).get('service');
   if (Object.prototype.hasOwnProperty.call(services, selectedService)) {
     selectInterest(services[selectedService]);

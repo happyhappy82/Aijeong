@@ -1,0 +1,109 @@
+/* Shared responsive refinements; keep the original theme and portfolio artwork. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+.geo-wrap { padding-left: max(clamp(16px, 3vw, 32px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 3vw, 32px), env(safe-area-inset-right, 0px)); }
+.geo-home :where(h1, h2, h3, p, a, label, legend, dt, dd) { overflow-wrap: anywhere; }
+.geo-home :where(.geo-card, .geo-form-row, .aj-service-split, .aj-service-rows article, .aj-search-upper, .aj-search-base, .aj-service-deliverables > div) > * { min-width: 0; }
+.geo-button { max-width: 100%; text-align: center; }
+.geo-service-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.geo-service-list li { min-width: 0; }
+.geo-service-list li::before { flex-shrink: 0; }
+.geo-section-badge { max-width: 100%; line-height: 1.6; }
+.wp-content { overflow-wrap: anywhere; }
+.wp-content :where(img, video, iframe) { max-width: 100%; }
+.wp-content pre { max-width: 100%; overflow: auto; }
+.wp-content table { display: block; max-width: 100%; overflow-x: auto; }
+footer :where(p, a) { overflow-wrap: anywhere; }
+
+@media (max-width: 1023px) {
+    #header nav { display: none; }
+    #mobile-menu-button { display: flex; }
+    #mobile-menu-button, #mobile-menu-close, #theme-toggle { width: 44px; height: 44px; flex-shrink: 0; }
+    #mobile-menu, #mobile-menu-backdrop { display: block; }
+    #mobile-menu {
+        width: min(352px, calc(100vw - 24px));
+        height: 100vh;
+        height: 100dvh;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        padding-bottom: max(24px, env(safe-area-inset-bottom, 0px));
+        padding-right: env(safe-area-inset-right, 0px);
+    }
+    #mobile-menu.translate-x-full { visibility: hidden; pointer-events: none; }
+    #mobile-menu.translate-x-0 { visibility: visible; pointer-events: auto; }
+    #mobile-menu .mobile-menu-link { display: flex; align-items: center; min-height: 48px; line-height: 1.6; overflow-wrap: anywhere; }
+    #header > .mx-auto, footer > .mx-auto { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+    .geo-home .geo-link { min-height: 44px; gap: 10px; }
+    .geo-card-actions { gap: 8px 20px; }
+    .geo-interests label { max-width: 100%; }
+    .geo-interests span { display: flex; align-items: center; min-height: 44px; font-size: 14px; line-height: 1.5; }
+    input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]), textarea, select { font-size: 16px; }
+    .geo-contact-form input:not([type="radio"]), .geo-contact-form textarea { font-size: 16px; }
+    .geo-contact-form input::placeholder, .geo-contact-form textarea::placeholder { font-size: 14px; }
+    .geo-form-row { grid-template-columns: 1fr; gap: 0; }
+    footer nav a { display: flex; align-items: center; min-height: 44px; }
+    footer a[aria-label] { min-width: 44px; min-height: 44px; }
+    .aj-service-steps p, .geo-process p { font-size: 14px; }
+}
+
+@media (max-width: 767px) {
+    .geo-hero { min-height: 100vh; min-height: 100svh; }
+    .geo-hero-inner { padding-block: 80px 48px; }
+    .geo-hero-inner > .max-w-2xl { padding-top: 20px; }
+    .geo-home .geo-hero h1, .aj-service-hero h1 { font-size: clamp(30px, 7.5vw, 42px); line-height: 1.25; }
+    .geo-hero .hero-subtitle { font-size: 17px; line-height: 1.75; }
+    .geo-hero .hero-description { font-size: 16px; line-height: 1.85; }
+    .geo-hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .geo-hero-actions .geo-button { padding-inline: 16px; }
+    .geo-services { gap: 20px; }
+    .geo-card { padding: 28px; }
+    .geo-card h3 { font-size: clamp(24px, 5vw, 28px); }
+    .geo-card > p:not(.geo-card-label) { font-size: 16px; }
+    .geo-card > p:not(.geo-card-label) br { display: none; }
+    .geo-service-list { font-size: 13px; line-height: 1.7; gap: 12px; }
+    .geo-process h3 { font-size: 17px; }
+    .geo-process p br, .aj-service-steps p br { display: none; }
+    .geo-contact-form { padding: 28px 24px; }
+    .geo-contact-form legend, .geo-contact-form > label, .geo-form-row > label { font-size: 14px; }
+    .geo-form-note { font-size: 13px; }
+    .aj-service-heading > p br, .aj-service-caption br, .aj-service-prose p br { display: none; }
+    .aj-service-rows article { gap: 12px; }
+    .aj-service-faq summary { min-height: 44px; font-size: 17px; }
+    .aj-service-steps { gap: 28px 20px; }
+    .aj-service-steps h3 { font-size: 18px; }
+    .aj-renewal-comparison p { font-size: 15px; padding: 20px 16px; }
+}
+
+@media (max-width: 599px) {
+    .aj-search-upper { grid-template-columns: 1fr; }
+    .aj-search-foundation p br { display: none; }
+    .aj-service-actions { display: grid; grid-template-columns: 1fr; }
+    .aj-service-actions .geo-button { width: 100%; }
+    .aj-renewal-comparison > div { grid-template-columns: 1fr; }
+    .aj-renewal-comparison .aj-comparison-labels { display: none; }
+    .aj-renewal-comparison p:first-child::before { content: "점검할 모습"; }
+    .aj-renewal-comparison p:last-child::before { content: "바꿔갈 방향"; color: var(--accent); }
+    .aj-renewal-comparison p::before { display: block; margin-bottom: 8px; font-size: 12px; font-weight: 700; color: #9ca3af; }
+    .aj-renewal-comparison p:last-child { border-left: 0; border-top: 1px solid #262626; }
+    .aj-service-contact .geo-button { width: 100%; }
+}
+
+@media (max-width: 359px) {
+    .geo-hero-actions { grid-template-columns: 1fr; }
+    .geo-card { padding: 24px 20px; }
+    .geo-process { grid-template-columns: 1fr; }
+    .geo-process li { padding: 24px; }
+    .geo-contact-form { padding: 24px 18px; }
+    .geo-interests { display: grid; grid-template-columns: 1fr; }
+    .geo-interests label, .geo-interests span { width: 100%; }
+    .aj-service-steps { grid-template-columns: 1fr; }
+    .aj-service-rows h3 { font-size: 18px; }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .geo-hero { min-height: auto; }
+    .geo-hero-inner { padding-block: 64px 40px; }
+    .geo-hero-inner > .max-w-2xl { padding-top: 0; }
+    .geo-hero h1 { font-size: 36px; }
+    .aj-service-hero { padding-block: 48px; }
+    .aj-service-breadcrumb { margin-bottom: 24px; }
+}

@@ -3,9 +3,9 @@
 function aijeong_service_pages() {
     return array(
         'geo' => array(
-            'name' => 'GEO',
-            'title' => 'GEO·AEO 검색 최적화',
-            'description' => 'SEO 기반을 점검하고 고객 질문에 맞춰 브랜드 정보와 콘텐츠를 정비합니다 에이정의 GEO·AEO 서비스 범위와 진행 과정을 확인하세요',
+            'name' => '브랜드 AI검색 노출',
+            'title' => '브랜드 AI검색 노출 · GEO·AEO',
+            'description' => '브랜드 AI검색 노출을 위해 SEO 기반을 점검하고 고객 질문에 맞춰 브랜드 정보와 콘텐츠를 정비합니다 GEO·AEO 작업 범위와 진행 과정을 확인하세요',
         ),
         'website-renewal' => array(
             'name' => '웹사이트 리뉴얼',

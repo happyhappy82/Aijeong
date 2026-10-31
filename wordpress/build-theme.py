@@ -13,7 +13,7 @@ import zipfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-VERSION = '1.8.2'
+VERSION = '1.9.0'
 DESCRIPTION = 'AI 검색에 맞춰 브랜드를 다시 설계합니다'
 TITLE = '에이정 | AI가 선택하는 브랜드, GEO·AEO 마케팅'
 META_DESCRIPTION = '에이정은 GEO·AEO 기반 AI 검색 마케팅, 브랜드 콘텐츠 개선, 웹사이트 리뉴얼을 통해 AI 검색에서 브랜드가 정확하게 소개되도록 돕습니다'
@@ -72,7 +72,7 @@ def build(base, output):
     new_nav = """function aijeong_get_nav_items() {
     return array(
         array('label' => '서비스', 'href' => '/#services', 'children' => array(
-            array('label' => 'GEO', 'href' => '/geo/'),
+            array('label' => '브랜드 AI검색 노출', 'href' => '/geo/'),
             array('label' => '웹사이트 리뉴얼', 'href' => '/website-renewal/'),
             array('label' => 'AI교육', 'href' => '/ai-education/'),
         )),
@@ -103,9 +103,17 @@ def build(base, output):
     style = re.sub(r'^Description:.*$', 'Description: 에이정 - ' + DESCRIPTION, style, count=1, flags=re.M)
     (theme / 'style.css').write_text(style)
 
+    main_css_path = theme / 'assets/css/main.css'
+    main_css = replace_once(main_css_path.read_text(),
+                            'url(../assets/fonts/PretendardVariable.woff2)',
+                            'url(../fonts/PretendardVariable.woff2)')
+    main_css_path.write_text(main_css)
+
     shutil.copyfile(REPO / 'wordpress/geo-home.css', theme / 'assets/css/geo-home.css')
     shutil.copyfile(REPO / 'wordpress/service-pages.css', theme / 'assets/css/service-pages.css')
+    shutil.copyfile(REPO / 'wordpress/responsive.css', theme / 'assets/css/responsive.css')
     shutil.copyfile(REPO / 'wordpress/geo-home.js', theme / 'assets/js/geo-home.js')
+    shutil.copyfile(REPO / 'wordpress/mobile-menu.js', theme / 'assets/js/mobile-menu.js')
     shutil.copyfile(REPO / 'wordpress/assets/geo-hero-background.png', theme / 'assets/images/geo-hero-background.png')
 
     # Fail before packaging if any PHP template is syntactically invalid.
