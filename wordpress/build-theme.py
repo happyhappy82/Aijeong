@@ -13,7 +13,7 @@ import zipfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-VERSION = '1.8.0'
+VERSION = '1.8.1'
 DESCRIPTION = 'AI 검색에 맞춰 브랜드를 다시 설계합니다'
 TITLE = '에이정 | AI가 선택하는 브랜드, GEO·AEO 마케팅'
 META_DESCRIPTION = '에이정은 GEO·AEO 기반 AI 검색 마케팅, 브랜드 콘텐츠 개선, 웹사이트 리뉴얼을 통해 AI 검색에서 브랜드가 정확하게 소개되도록 돕습니다'
@@ -32,7 +32,8 @@ def build(base, output):
     if theme.resolve() == base:
         raise ValueError('Output must be separate from the base theme')
     required = ['style.css', 'index.php', 'front-page.php', 'header.php', 'footer.php',
-                'functions.php', 'inc/customizer.php', 'inc/seo.php']
+                'functions.php', 'inc/customizer.php', 'inc/seo.php',
+                'template-parts/home/section-clients.php']
     if not all((base / name).is_file() for name in required):
         raise ValueError('Base theme is incomplete')
     if theme.exists():

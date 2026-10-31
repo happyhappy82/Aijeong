@@ -22,6 +22,10 @@ $site = aijeong_get_site_config();
         </div>
     </section>
 
+    <div id="clients">
+        <?php get_template_part('template-parts/home/section', 'clients'); ?>
+    </div>
+
     <section class="geo-section geo-section-alt" aria-labelledby="geo-question-heading">
         <div class="geo-wrap">
             <div class="geo-section-heading">

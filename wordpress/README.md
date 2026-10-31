@@ -6,6 +6,8 @@
 
 기존 `aijeong-theme` 클래식 테마의 디자인에 맞춰 GEO 홈페이지를 반영합니다. 웹사이트 리뉴얼은 서비스 중 하나로 배치합니다. 기존 공통 헤더·푸터·CSS·배경 사진·폰트·메뉴와 테마 전환 동작을 그대로 사용합니다. 콘텐츠 정본은 `wordpress/front-page.php`이며 초기 정적 HTML 시안은 이전 작업 이력입니다.
 
+사용자 보존 지정: 메인 히어로 다음의 **‘함께한 기업들’ 포트폴리오 영역**은 원본 `template-parts/home/section-clients.php`를 그대로 호출합니다. 제목·교육 이력 설명·11개 로고·순서·원래 스크롤 효과를 유지하며 이후 홈페이지 수정에서도 제외하지 않습니다.
+
 ```sh
 python3 wordpress/build-theme.py \
   --base-theme '/Users/mcbookpro/Documents/Claude Code/archive/AJeong Site/aijeong-theme'
@@ -14,7 +16,7 @@ python3 wordpress/build-theme.py \
 생성 결과:
 
 - `_local/package/aijeong-theme/`: 업로드 패키지의 실제 테마 소스
-- `_local/package/aijeong-theme-v1.8.0-geo-20261031.zip`: WordPress 테마 업로드용 ZIP
+- `_local/package/aijeong-theme-v1.8.1-geo-20261031.zip`: WordPress 테마 업로드용 ZIP
 - `_local/package/build-report.json`: 변경 파일과 PHP 검사 결과
 
 ZIP의 최상위 폴더는 기존과 같은 `aijeong-theme`입니다. 관리자에서 외모 → 테마 → 새 테마 추가 → 테마 업로드로 올리고 기존 테마 교체를 선택하는 방식입니다. 운영 업로드는 별도 사용자 지시에 따라 수행합니다.
@@ -43,6 +45,12 @@ php -S 127.0.0.1:18266 -t _local/wp _local/wp/router.php
 ```
 
 접속: http://127.0.0.1:18266/
+
+## 1.8.1 — 함께한 기업들 포트폴리오 복원·보존
+
+기존 메인의 ‘함께한 기업들’ 영역이 새 시안에서 빠졌다는 사용자 요청에 따라 히어로 바로 다음에 원래 템플릿을 다시 연결했습니다. 원본 제목·교육 이력 설명·11개 기업/기관 로고와 순서를 유지합니다. 기존 CSS의 로고 마키와 스크롤 효과 스크립트를 그대로 사용하며 별도 디자인이나 내용을 추가하지 않습니다. `#clients`로 바로 이동할 수 있습니다.
+
+실제 로컬 HTML에서 제목·설명과 원래 로고 순서(11개를 스크롤용으로 3회 반복)를 확인했습니다. 로고 이미지 11개 HTTP 200·원본 바이트 동일, 원본 포트폴리오 템플릿·CSS·JS 동일, PHP 41개 문법·ZIP 무결성을 확인했습니다. 1.8.0 ZIP 대비 메인 PHP와 테마 버전만 바뀝니다. 실제 브라우저 화면 자동검수는 기존 연결 문제로 미완료입니다.
 
 ## 1.8.0 — 서비스 상세 3페이지와 문의 연결
 
