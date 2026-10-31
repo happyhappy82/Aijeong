@@ -36,8 +36,15 @@
     "h3_count": 6,
     "article_primary_keyword_count": 1,
     "meta_description_characters": 100,
-    "visible_markdown_characters": 4433,
+    "visible_markdown_characters": 4542,
     "title_h1_equal": true,
     "external_source_links": 6
+  },
+  "revision": "v1.1 / 2026-10-31 사용자 제공 실제 미팅 경험 1문단 추가",
+  "experience_source": {
+    "type": "user_provided_firsthand_experience",
+    "date": "2026-10-31",
+    "summary": "여러 브랜드 담당자·대표와의 미팅에서 AI 답변에 소개되는 중요성은 알지만 무엇부터 시작할지 고민하는 분들이 많았다는 사용자 관찰",
+    "limits": "특정 업체·횟수·인원·기간·성과·직접 인용·시장 전체 비율은 추가하지 않음"
   }
 }
