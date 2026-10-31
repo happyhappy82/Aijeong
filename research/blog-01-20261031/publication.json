@@ -1,0 +1,41 @@
+{
+  "verified_at": "2026-10-31T14:47:31.526190+09:00",
+  "title": "GEO SEO 차이, 우리 브랜드는 무엇부터 준비해야 할까?",
+  "post_id": 1714,
+  "status": "publish",
+  "url": "https://aijeong.com/geo-seo-%ec%b0%a8%ec%9d%b4-%ec%9a%b0%eb%a6%ac-%eb%b8%8c%eb%9e%9c%eb%93%9c%eb%8a%94-%eb%ac%b4%ec%97%87%eb%b6%80%ed%84%b0-%ec%a4%80%eb%b9%84%ed%95%b4%ec%95%bc-%ed%95%a0%ea%b9%8c/",
+  "listing_url": "https://aijeong.com/135-2/",
+  "featured_media_id": 1722,
+  "thumbnail_url": "https://aijeong.com/wp-content/uploads/2026/10/01_SEO_GEO_차이.png",
+  "thumbnail_dimensions": [
+    1000,
+    1000
+  ],
+  "thumbnail_sha256": "4b7b3eaf74ea07706af2e1be5d474d35016948c943604bada0a5f0e9067251ea",
+  "thumbnail_alt": "SEO와 GEO의 차이, 우리 브랜드의 준비 순서를 소개하는 에이정 블로그 썸네일",
+  "notion_page_id": "40a753eb-c013-819c-b3ee-c6ae964d247b",
+  "notion_status": "Published",
+  "notion_wp_post_id": 1714,
+  "publication_method": "Existing logged-in WordPress admin / Quick Draft UTF-8 HTML / editor metadata and link URL only",
+  "checks": {
+    "published": true,
+    "blog_category": true,
+    "h1_one_title": true,
+    "body_h1_zero": true,
+    "h2_five": true,
+    "h3_five": true,
+    "table_one": true,
+    "approved_text_preserved_excluding_toc_whitespace": true,
+    "source_and_service_links_preserved": true,
+    "inquiry_link_correct": true,
+    "meta_description_matches_excerpt": true,
+    "meta_description_100_characters": true,
+    "featured_media": true,
+    "thumbnail_original_hash_matches": true,
+    "og_image": true,
+    "listing_title": true,
+    "listing_image": true
+  },
+  "visual_check": "Whale native UI: actual public thumbnail, title, article and TOC observed; existing ad overlay present, unchanged",
+  "limits": "Publishing and rendering verified; search indexing or AI citation outcomes not measured; GitHub publication automation still lacks WP authentication secrets"
+}

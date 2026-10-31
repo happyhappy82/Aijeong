@@ -1,7 +1,7 @@
 {
   "site_key": "aj",
   "prompt_key": "aj_default + latest user instructions",
-  "status": "OriginalDraft / local review only",
+  "status": "Published",
   "topic_number": 1,
   "primary_keyword": "GEO SEO 차이",
   "title": "GEO SEO 차이, 우리 브랜드는 무엇부터 준비해야 할까?",
@@ -21,9 +21,9 @@
       "placement": "마지막 CTA"
     }
   ],
-  "link_status": "로컬 서비스 기획의 경로이며 운영 미업로드. 공개 대상 URL을 확인한 뒤 본문에 연결한다.",
+  "link_status": "운영 서비스 및 문의 링크 연결·실제 공개 HTML 확인 완료",
   "wordpress_note": "제목 필드가 H1을 출력하면 본문은 첫 H1을 제외하고 첫 문단부터 넣는다. SEO title은 확정 제목과 동일하게 설정한다.",
-  "scope_note": "공식 홈페이지 1번 초안의 중복 내용을 재검토·수정하고 10개 썸네일 핵심카피를 제안. 다른 글 집필/Canva 조작·다운로드/발행/테마 변경 없음.",
+  "scope_note": "1번 v2 원고에 제작한 1번 썸네일을 적용해 공식 WordPress 블로그 게시 완료. 2~10번 집필·발행 및 테마 변경 없음.",
   "length_assumption": "사용자가 승인한 짧은 제목 유지. 기존 90~100자는 이번 메타 설명에 적용. 메인키워드 반복은 정확한 구문 기준으로 절제한다.",
   "checks": {
     "h1_count": 1,
@@ -42,5 +42,8 @@
     "summary": "여러 브랜드 담당자·대표와의 미팅에서 AI 답변에 소개되는 중요성은 알지만 무엇부터 시작할지 고민하는 분들이 많았다는 사용자 관찰",
     "limits": "특정 업체·횟수·인원·기간·성과·직접 인용·시장 전체 비율은 추가하지 않음"
   },
-  "content_boundary_document": "AIJEONG_BLOG_CONTENT_BOUNDARIES_20261031.md"
+  "content_boundary_document": "AIJEONG_BLOG_CONTENT_BOUNDARIES_20261031.md",
+  "publication_record": "research/blog-01-20261031/publication.json",
+  "wordpress_post_id": 1714,
+  "public_url": "https://aijeong.com/geo-seo-%ec%b0%a8%ec%9d%b4-%ec%9a%b0%eb%a6%ac-%eb%b8%8c%eb%9e%9c%eb%93%9c%eb%8a%94-%eb%ac%b4%ec%97%87%eb%b6%80%ed%84%b0-%ec%a4%80%eb%b9%84%ed%95%b4%ec%95%bc-%ed%95%a0%ea%b9%8c/"
 }
