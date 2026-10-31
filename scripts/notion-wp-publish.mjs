@@ -5,6 +5,14 @@ import fs from "node:fs/promises";
 const NOTION_VERSION = "2022-06-28";
 
 const PRESETS = {
+  blog: {
+    label: "Aijeong official blog",
+    notionDatabaseId: "2ff753ebc0138180bf4df508ae569a39",
+    notionDataSourceId: "2ff753eb-c013-8132-8660-000b97e14839",
+    wpCategorySlug: "blog",
+    listUrl: "https://aijeong.com/135-2/",
+    singlePageOnly: true,
+  },
   column: {
     label: "AJEONG column",
     notionDatabaseId: "2f1753ebc01381129591e3660296705f",
@@ -329,6 +337,9 @@ async function findExistingPost(slug) {
 
 async function queryReadyPages(type) {
   const preset = PRESETS[type];
+  if (preset.singlePageOnly) {
+    throw new Error(`${type} publishing requires a specific Notion page ID`);
+  }
   const results = [];
   let startCursor = "";
 
@@ -438,9 +449,13 @@ async function convertBlock(block, ctx) {
     case "heading_1":
       return `<h2>${text}</h2>${children ? `\n${children}` : ""}`;
     case "heading_2":
-      return `<h3>${text}</h3>${children ? `\n${children}` : ""}`;
+      return ctx.preserveHeadingLevels
+        ? `<h2>${text}</h2>${children ? `\n${children}` : ""}`
+        : `<h3>${text}</h3>${children ? `\n${children}` : ""}`;
     case "heading_3":
-      return `<h4>${text}</h4>${children ? `\n${children}` : ""}`;
+      return ctx.preserveHeadingLevels
+        ? `<h3>${text}</h3>${children ? `\n${children}` : ""}`
+        : `<h4>${text}</h4>${children ? `\n${children}` : ""}`;
     case "quote":
       return `<blockquote>${text}${children ? `\n${children}` : ""}</blockquote>`;
     case "callout":
@@ -534,18 +549,21 @@ async function convertBlocks(blocks, ctx) {
   return html.join("\n");
 }
 
-async function updateNotionSuccess(pageId, post) {
+async function updateNotionSuccess(pageId, post, type) {
+  const properties = type === "blog"
+    ? { "WP Post ID": { number: post.id } }
+    : {
+        "WP Post ID": { number: post.id },
+        "WP URL": { url: post.link },
+        "Published At": { date: { start: new Date().toISOString() } },
+        "Publish Error": { rich_text: [] },
+        "Publish Requested": { checkbox: false },
+      };
   try {
     await notionJson(`/pages/${pageId}`, {
       method: "PATCH",
       body: JSON.stringify({
-        properties: {
-          "WP Post ID": { number: post.id },
-          "WP URL": { url: post.link },
-          "Published At": { date: { start: new Date().toISOString() } },
-          "Publish Error": { rich_text: [] },
-          "Publish Requested": { checkbox: false },
-        },
+        properties,
       }),
     });
   } catch (error) {
@@ -601,6 +619,7 @@ async function publishNotionPage({ type, notionPageId }) {
   const ctx = {
     mediaCache: new Map(),
     bodyMediaIds: [],
+    preserveHeadingLevels: type === "blog",
   };
 
   const cover = coverUrl(page);
@@ -638,7 +657,7 @@ async function publishNotionPage({ type, notionPageId }) {
         body: JSON.stringify(payload),
       });
 
-  await updateNotionSuccess(pageId, post);
+  await updateNotionSuccess(pageId, post, type);
 
   const publicChecks = {};
   for (const [key, url] of Object.entries({ post: post.link, list: preset.listUrl })) {
@@ -671,7 +690,9 @@ async function publishNotionPage({ type, notionPageId }) {
 
 async function scanReadyPages(type) {
   const types =
-    !type || type === "all" ? Object.keys(PRESETS) : [type];
+    !type || type === "all"
+      ? Object.keys(PRESETS).filter((key) => !PRESETS[key].singlePageOnly)
+      : [type];
   const results = [];
   const failures = [];
 
