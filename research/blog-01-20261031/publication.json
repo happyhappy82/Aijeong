@@ -45,6 +45,9 @@
     "comparison": "최초 게시 원문에는 여러 행/셀이 있었으나 이후 Gutenberg 링크 편집 저장 뒤 구조가 한 셀로 바뀐 것을 새로 확인",
     "verification_gap": "기존 검증은 table 개수와 전체 텍스트를 확인했으며 행/열 구조를 확인하지 못함",
     "action": "이유 설명만 요청하여 공개 원고는 변경하지 않음",
-    "recommendation": "앞선 SEO/GEO 설명과 중복되므로 표 삭제가 간결함"
-  }
+    "recommendation": "앞선 SEO/GEO 설명과 중복되므로 표 삭제가 간결함",
+    "resolution": "Restored original 3 columns / 4 rows with mobile inner horizontal scrolling. See table-fix.json and comparison-table.html.",
+    "status": "resolved"
+  },
+  "table_fix_record": "research/blog-01-20261031/table-fix.json"
 }

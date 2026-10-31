@@ -1,0 +1,46 @@
+{
+  "updated_at": "2026-10-31T15:20:36.598528+09:00",
+  "post_id": 1714,
+  "url": "https://aijeong.com/geo-seo-%ec%b0%a8%ec%9d%b4-%ec%9a%b0%eb%a6%ac-%eb%b8%8c%eb%9e%9c%eb%93%9c%eb%8a%94-%eb%ac%b4%ec%97%87%eb%b6%80%ed%84%b0-%ec%a4%80%eb%b9%84%ed%95%b4%ec%95%bc-%ed%95%a0%ea%b9%8c/",
+  "method": "Existing logged-in admin. Insert ASCII HTML markup only around original Korean text. Replace outer paragraph block with wp:html to preserve nested structures. No direct Korean body input.",
+  "rows": [
+    [
+      "비교할 부분",
+      "SEO",
+      "GEO"
+    ],
+    [
+      "주로 살피는 대상",
+      "검색에서 웹페이지가 발견되고 이해되는 과정",
+      "생성형 AI 답변에서 콘텐츠가 활용되는 모습"
+    ],
+    [
+      "브랜드가 먼저 던질 질문",
+      "중요한 페이지에 접근하고 내용을 읽을 수 있을까?",
+      "고객 질문에 답할 정확한 정보와 근거가 있을까?"
+    ],
+    [
+      "함께 준비할 것",
+      "찾고 읽을 수 있는 사이트와 명확한 콘텐츠",
+      "참고할 수 있는 브랜드 정보와 질문에 대한 답"
+    ]
+  ],
+  "checks": {
+    "published": true,
+    "table_rows_4": true,
+    "cells_per_row_3": true,
+    "exact_original_table_cells": true,
+    "column_and_row_headers": true,
+    "body_text_preserved": true,
+    "title_excerpt_thumbnail_category_tags_unchanged": true,
+    "heading_structure_preserved": true,
+    "inquiry_link_preserved": true,
+    "meta_description_unchanged": true,
+    "mobile_scroll_wrapper": true
+  },
+  "visual_verification": {
+    "desktop": "Whale actual public page: three columns, row borders, padding and readable text.",
+    "mobile": "Whale 390px emulation: inner horizontal scrolling and swipe to read complete GEO column. No physical-device test."
+  },
+  "scope": "Restore table markup and styling plus safe block boundary only. Body wording, title, metadata, image, category and inquiry URL preserved. No theme changes."
+}
