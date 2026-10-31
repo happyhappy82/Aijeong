@@ -5,20 +5,15 @@
   "topic_number": 1,
   "primary_keyword": "GEO SEO 차이",
   "title": "GEO SEO 차이, 우리 브랜드는 무엇부터 준비해야 할까?",
-  "meta_description": "SEO와 GEO, 우리 브랜드는 무엇부터 준비해야 할까요? 홈페이지 상태별 우선 작업부터 리뉴얼 필요 여부와 외주 범위까지, 도입을 검토하는 대표·담당자의 판단 기준을 살펴보세요.",
+  "meta_description": "SEO와 GEO, 우리 브랜드는 무엇부터 준비해야 할까요? 두 접근의 차이와 검색 기반이 필요한 이유, 홈페이지 상태별 준비 순서까지 살펴보고 우리 회사의 첫 작업을 정리해보세요.",
   "article_file": "AIJEONG_BLOG_01_GEO_SEO_DRAFT_20261031.md",
   "audience": "서비스 이용을 검토하는 대표·마케팅·웹 담당자",
-  "decision": "SEO 기반·브랜드 정보/콘텐츠·홈페이지 구조 중 먼저 맡길 작업과 범위",
+  "decision": "SEO·GEO 차이를 이해하고 검색 기반/정보/콘텐츠 중 첫 확인 작업을 정한다",
   "internal_link_plan": [
     {
       "anchor": "브랜드 AI검색 노출",
       "path": "/geo/",
       "placement": "마지막 H2 서비스명"
-    },
-    {
-      "anchor": "웹사이트 리뉴얼",
-      "path": "/website-renewal/",
-      "placement": "리뉴얼 판단 섹션"
     },
     {
       "anchor": "문의하기",
@@ -28,23 +23,24 @@
   ],
   "link_status": "로컬 서비스 기획의 경로이며 운영 미업로드. 공개 대상 URL을 확인한 뒤 본문에 연결한다.",
   "wordpress_note": "제목 필드가 H1을 출력하면 본문은 첫 H1을 제외하고 첫 문단부터 넣는다. SEO title은 확정 제목과 동일하게 설정한다.",
-  "scope_note": "사용자가 승인한 공식 홈페이지 1번 초안만 작성. Premium/백링크/Notion 저장/발행/테마 변경 없음.",
+  "scope_note": "공식 홈페이지 1번 초안의 중복 내용을 재검토·수정하고 10개 썸네일 핵심카피를 제안. 다른 글 집필/Canva 조작·다운로드/발행/테마 변경 없음.",
   "length_assumption": "사용자가 승인한 짧은 제목 유지. 기존 90~100자는 이번 메타 설명에 적용. 메인키워드 반복은 정확한 구문 기준으로 절제한다.",
   "checks": {
     "h1_count": 1,
     "h2_count": 5,
-    "h3_count": 6,
+    "h3_count": 5,
     "article_primary_keyword_count": 1,
     "meta_description_characters": 100,
-    "visible_markdown_characters": 4542,
+    "visible_markdown_characters": 3771,
     "title_h1_equal": true,
-    "external_source_links": 6
+    "external_source_links": 5
   },
-  "revision": "v1.1 / 2026-10-31 사용자 제공 실제 미팅 경험 1문단 추가",
+  "revision": "v2 / 2026-10-31 H구조·10개 기획 중복 검토 후 재작성",
   "experience_source": {
     "type": "user_provided_firsthand_experience",
     "date": "2026-10-31",
     "summary": "여러 브랜드 담당자·대표와의 미팅에서 AI 답변에 소개되는 중요성은 알지만 무엇부터 시작할지 고민하는 분들이 많았다는 사용자 관찰",
     "limits": "특정 업체·횟수·인원·기간·성과·직접 인용·시장 전체 비율은 추가하지 않음"
-  }
+  },
+  "content_boundary_document": "AIJEONG_BLOG_CONTENT_BOUNDARIES_20261031.md"
 }

@@ -6,14 +6,19 @@
     "source": "autocomplete.json",
     "title": "GEO SEO 차이, 우리 브랜드는 무엇부터 준비해야 할까?",
     "audience": "서비스 도입을 검토하는 대표·담당자",
-    "focus": "회사 상태에 맞는 우선 작업과 의뢰 범위",
+    "focus": "개념 차이·검색 기반·상태별 시작점·주력 서비스/고객/질문 정리",
     "status": "제목 확정",
     "autocomplete_exact": "geo seo 차이",
     "source_url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=ko&gl=kr&q=GEO+SEO",
     "checked_at": "2026-10-31T12:51:36+09:00",
-    "draft_status": "OriginalDraft v1 / 로컬 검토용·미발행",
+    "draft_status": "OriginalDraft v2 / 10개 기획 중복 검토·미팅 경험 유지 / 미발행",
     "draft_file": "AIJEONG_BLOG_01_GEO_SEO_DRAFT_20261031.md",
-    "editorial_file": "AIJEONG_BLOG_01_REVIEW_20261031.md"
+    "editorial_file": "AIJEONG_BLOG_01_REVIEW_20261031.md",
+    "thumbnail_copy": {
+      "line1": "SEO·GEO 차이",
+      "line2": "무엇부터 시작할까?",
+      "status": "카피 제안"
+    }
   },
   {
     "group": "서비스 검토",
@@ -36,7 +41,12 @@
       "고객사의 준비 자료",
       "보고·측정 기준",
       "계약·운영 조건"
-    ]
+    ],
+    "thumbnail_copy": {
+      "line1": "GEO 대행사 선택",
+      "line2": "계약 전 확인할 5가지",
+      "status": "카피 제안"
+    }
   },
   {
     "group": "업종별 GEO",
@@ -59,7 +69,12 @@
       "위치·운영·이용 안내",
       "홈페이지 접근·색인 상태",
       "환자 질문과 안내 콘텐츠"
-    ]
+    ],
+    "thumbnail_copy": {
+      "line1": "병원 GEO 마케팅",
+      "line2": "먼저 점검할 5가지",
+      "status": "카피 제안"
+    }
   },
   {
     "group": "업종별 GEO",
@@ -75,7 +90,12 @@
     "checked_at": "2026-10-31T13:14:57+09:00",
     "previous_title": "제조업 마케팅, GEO를 위한 제품·기술 정보는 어떻게 준비할까?",
     "title_revision": "2026-10-31 숫자·질문형 제목 수정",
-    "title_format": "질문형"
+    "title_format": "질문형",
+    "thumbnail_copy": {
+      "line1": "제조업 GEO",
+      "line2": "어떤 자료가 필요할까?",
+      "status": "카피 제안"
+    }
   },
   {
     "group": "업종별 GEO",
@@ -91,7 +111,12 @@
     "checked_at": "2026-10-31T13:14:57+09:00",
     "previous_title": "프랜차이즈 마케팅, GEO를 위한 본사·가맹점 정보는 어떻게 정리할까?",
     "title_revision": "2026-10-31 숫자·질문형 제목 수정",
-    "title_format": "질문형"
+    "title_format": "질문형",
+    "thumbnail_copy": {
+      "line1": "프랜차이즈 GEO",
+      "line2": "본사부터? 가맹점부터?",
+      "status": "카피 제안"
+    }
   },
   {
     "group": "업종별 GEO",
@@ -114,7 +139,12 @@
       "사용 조건·주의사항",
       "비교·구매 전 질문",
       "상품·문의 동선"
-    ]
+    ],
+    "thumbnail_copy": {
+      "line1": "쇼핑몰 AI 검색",
+      "line2": "상품 페이지 점검 5가지",
+      "status": "카피 제안"
+    }
   },
   {
     "group": "홈페이지 리뉴얼",
@@ -137,7 +167,12 @@
       "모바일 사용성",
       "관리·기술 제약",
       "수정 대상이 전체에 미치는 범위"
-    ]
+    ],
+    "thumbnail_copy": {
+      "line1": "홈페이지 리뉴얼",
+      "line2": "부분 수정? 전면 개편?",
+      "status": "카피 제안"
+    }
   },
   {
     "group": "홈페이지 리뉴얼",
@@ -160,7 +195,12 @@
       "콘텐츠 이관",
       "기존 주소·검색 정보 이전",
       "운영·유지보수"
-    ]
+    ],
+    "thumbnail_copy": {
+      "line1": "리뉴얼 비용",
+      "line2": "견적이 달라지는 5가지",
+      "status": "카피 제안"
+    }
   },
   {
     "group": "홈페이지 리뉴얼",
@@ -185,7 +225,12 @@
       "검색 주소·데이터 이전",
       "계정·자료·소스 인계",
       "유지보수 조건"
-    ]
+    ],
+    "thumbnail_copy": {
+      "line1": "리뉴얼 업체 선택",
+      "line2": "계약 전 질문 7가지",
+      "status": "카피 제안"
+    }
   },
   {
     "group": "홈페이지 리뉴얼",
@@ -208,6 +253,11 @@
       "버튼·터치",
       "문의 폼 입력·제출",
       "기기·화면 방향별 배치"
-    ]
+    ],
+    "thumbnail_copy": {
+      "line1": "반응형 웹사이트",
+      "line2": "모바일 문의 점검 5가지",
+      "status": "카피 제안"
+    }
   }
 ]

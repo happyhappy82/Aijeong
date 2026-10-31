@@ -35,7 +35,8 @@
     "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes?hl=ko",
     "supports": "사이트 URL 변경 시 기존/신규 URL 매핑과 리디렉션 준비",
     "type": "검색 플랫폼 공식 안내",
-    "checked_on": "2026-10-31"
+    "checked_on": "2026-10-31",
+    "usage": "v1의 리뉴얼 안내 근거. v2에서 리뉴얼 상세를 삭제하여 현재 본문에는 사용하지 않음."
   },
   {
     "title": "Google 유용하고 신뢰할 수 있는 사용자 중심 콘텐츠",
