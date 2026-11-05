@@ -1,0 +1,176 @@
+{
+  "checked_on": "2026-11-05",
+  "timezone": "Asia/Seoul",
+  "purpose": "AEO·GEO 마케팅 관련 공개 커뮤니티 질문을 원문 중심으로 수집하는 정성 조사",
+  "main_posts": 29,
+  "reference_posts": 9,
+  "methods": [
+    "웹 검색과 Firecrawl 검색으로 후보 발견",
+    "아이보스·지식iN 모바일 원문·기타 포럼을 공개 원문 추출로 확인",
+    "네이버 카페는 네이버 카페 검색에서 공개 원문을 Chrome UI로 열람",
+    "Reddit 공개 글을 web 도구로 열어 질문 본문 확인"
+  ],
+  "known_executed_queries": [
+    {
+      "engine": "네이버 카페 검색",
+      "query": "GEO 마케팅"
+    },
+    {
+      "engine": "네이버 카페 검색",
+      "query": "GEO 마케팅 궁금"
+    },
+    {
+      "engine": "Firecrawl",
+      "query": "site:clien.net (\"AEO\" OR \"GEO\") \"마케팅\""
+    },
+    {
+      "engine": "Firecrawl",
+      "query": "site:ppomppu.co.kr \"GEO\" \"마케팅\""
+    },
+    {
+      "engine": "Firecrawl",
+      "query": "site:okky.kr (\"AEO\" OR \"GEO\") \"검색\""
+    },
+    {
+      "engine": "web",
+      "query": "site.clien.net \"GEO\" \"마케팅\" 질문"
+    },
+    {
+      "engine": "web",
+      "query": "site.ppomppu.co.kr \"GEO\" \"마케팅\""
+    },
+    {
+      "engine": "web",
+      "query": "site.okky.kr \"AEO\" \"GEO\""
+    },
+    {
+      "engine": "web",
+      "query": "site.dogdrip.net \"GEO\" \"마케팅\""
+    }
+  ],
+  "query_log_note": "위 검색식은 실행한 검색 중 확인 가능한 일부만 기록. 전체 실행 로그라고 주장하지 않음.",
+  "platform_coverage": [
+    {
+      "platform": "네이버 카페",
+      "main": 4,
+      "reference": 1,
+      "result": "학원·병원·소상공인 관련 공개 글 원문 확인",
+      "limit": "가입·등급 제한 글 제외. 전체 카페 전수조사 아님"
+    },
+    {
+      "platform": "네이버 지식iN",
+      "main": 5,
+      "reference": 4,
+      "result": "시작 순서·대행사 선정·병원 노출·AI 인용 지표 질문 원문 확인",
+      "limit": "지식iN서비스·지식iN서비스트렌드 표시 계정은 별도 참고자료. 답변 홍보와 질문을 분리"
+    },
+    {
+      "platform": "아이보스",
+      "main": 8,
+      "reference": 0,
+      "result": "브랜드 명칭·채널·측정·대행 실무 질문 원문 확인",
+      "limit": "일부 답변 로그인 제한. 질문 본문 확인 범위로 해석"
+    },
+    {
+      "platform": "Reddit",
+      "main": 11,
+      "reference": 3,
+      "result": "대행사 비용·내부 수행·성과·경쟁사 추천·구매 질문 노출 확인",
+      "limit": "본문의 신원·성과 주장 독립 확인 불가. 상대시간만 표시된 작성일은 미확정"
+    },
+    {
+      "platform": "BlackHatWorld",
+      "main": 1,
+      "reference": 0,
+      "result": "장비 대여업체 관점의 AEO·GEO 도입 질문 원문 확인",
+      "limit": "광고성 답변의 효과 주장은 근거로 사용하지 않음"
+    },
+    {
+      "platform": "OKKY",
+      "main": 0,
+      "reference": 1,
+      "result": "SEO·GEO 업무와 개발 직무의 경계에 관한 질문을 인접 자료로 보관",
+      "limit": "구매 질문과 서비스 제작기·홍보 글을 분리"
+    },
+    {
+      "platform": "클리앙",
+      "main": 0,
+      "reference": 0,
+      "result": "후보 글 원문에서 마케팅 연재 피드백 질문 확인",
+      "limit": "AEO·GEO 서비스 질문은 해당 글에서 확인하지 못함. 전체 사이트에 질문이 없다는 의미 아님"
+    },
+    {
+      "platform": "뽐뿌",
+      "main": 0,
+      "reference": 0,
+      "result": "관련 검색에서 주로 뉴스 전재·보도자료형 후보 발견",
+      "limit": "이번 검색 범위에서 포함 기준에 맞는 원문 질문을 확보하지 못함"
+    },
+    {
+      "platform": "디스콰이엇",
+      "main": 0,
+      "reference": 0,
+      "result": "관련 검색에서 서비스 소개·설명형 후보 발견",
+      "limit": "이번 검색 범위에서 본자료에 넣을 질문은 확보하지 못함"
+    },
+    {
+      "platform": "개드립 등 일반 커뮤니티",
+      "main": 0,
+      "reference": 0,
+      "result": "추가 검색했으나 본자료에 포함할 질문 원문을 확보하지 못함",
+      "limit": "사이트 내부 전수 검색을 수행한 것은 아님"
+    }
+  ],
+  "limitations": [
+    "공개 검색에 노출된 질적 표본으로 대표성·전체 질문 수·빈도·검색량을 추정할 수 없음",
+    "작성자 신원과 실제 구매 의향·고객 유입·효과는 검증하지 않음",
+    "각 게시글의 존재와 질문 맥락만 해당 원문으로 확인한 단일 출처 관측",
+    "비공개·삭제 글과 로그인 제한 내용은 추정하지 않음",
+    "AI 검색 엔진별 실제 노출·정책·광고 상품·도구 성능은 이번 조사 대상이 아님",
+    "자동완성 검색어와 키워드 검색량 검증 및 블로그 발행은 수행하지 않음"
+  ],
+  "excluded_candidates": [
+    {
+      "url": "https://m.kin.naver.com/qna/dirs/40401/docs/494804022",
+      "title": "AI가 답하는 검색에서 정보가 잘 보이려면 어떻게 해야 하나요",
+      "reason": "검색 결과는 있었으나 원문이 페이지 없음으로 반환되어 질문 본문과 작성자를 확인하지 못함",
+      "verification": "원문 접근 결과"
+    },
+    {
+      "url": "https://cafe.naver.com/drinkad/2509",
+      "title": "자주 받는 질문 형식의 AEO·GEO 설명글",
+      "reason": "작성자가 구성한 FAQ와 이용자가 올린 질문을 구분해 본자료에서 제외",
+      "verification": "앞선 공개 검색·열람에서 확인"
+    },
+    {
+      "url": "https://cafe.naver.com/marketingrepublic/47667",
+      "title": "검색 상위에 있는데 ChatGPT에서는 경쟁사만 나오는 이유가 뭘까요?",
+      "reason": "질문형 제목이지만 설명과 자사 진단 제안으로 이어지는 글이어서 실제 질문 수요에 합산하지 않음",
+      "verification": "앞선 공개 검색·열람에서 확인"
+    },
+    {
+      "url": "https://cafe.naver.com/jihosoccer123/3787753",
+      "title": "AI가 우리 가게를 추천하게 하려면?",
+      "reason": "설명형 글을 일반 이용자의 질문글로 취급하지 않음",
+      "verification": "앞선 공개 검색·열람에서 확인"
+    },
+    {
+      "url": "https://www.clien.net/service/board/park/19245833",
+      "title": "선배님들 글 피드백 좀 요청드릴 수 있을까요?!",
+      "reason": "질문의 대상은 본인이 연재하는 마케팅 글의 피드백이며 SEO·GEO는 댓글에 등장. AEO·GEO 서비스 질문으로 집계하지 않음",
+      "verification": "원문 본문·댓글 확인"
+    },
+    {
+      "url": "https://okky.kr/articles/1559782",
+      "title": "[이벤트] 검색엔 보이는데, AI 답변엔 없다면? — URL로 SEO·GEO",
+      "reason": "검색 요약에 서비스 팀 소개와 이벤트가 표시됨. 구매자의 자발적 질문으로 포함하지 않음",
+      "verification": "검색 결과 요약만 확인"
+    },
+    {
+      "url": "https://www.blackhatworld.com/seo/how-to-optimize-the-blog-post-for-aeo-geo.1727182/",
+      "title": "How to optimize the blog post for AEO & GEO?",
+      "reason": "본문 맥락이 짧고 답변에서 지역 기반 GEO와 생성형 검색 GEO가 혼재. 용어 해석이 확실한 질문을 우선해 본자료에서 제외",
+      "verification": "원문 확인"
+    }
+  ]
+}
